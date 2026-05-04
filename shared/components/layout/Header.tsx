@@ -84,11 +84,11 @@ export default function Header() {
   const label = (en: string, km: string) => (locale === "en" ? en : km);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <header className="sticky top-0 z-50 bg-white/90 shadow-[0_1px_5px_rgba(24,77,108,0.22)] backdrop-blur-md dark:bg-zinc-950/90 dark:shadow-[0_1px_5px_rgba(24,77,108,0.35)]">
+      <div className="mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           href="/"
-          className="flex items-center gap-3 text-[#1a4d6d] transition-opacity hover:opacity-90 dark:text-[#5a9ab8]"
+          className="flex items-center gap-3 text-[#184D6C] transition-opacity hover:opacity-90 dark:text-[#5a9ab8]"
         >
           <Image
             src={logo}
@@ -119,8 +119,8 @@ export default function Header() {
                   className={[
                     "rounded-full px-3 py-2 text-sm transition-colors",
                     active
-                      ? "bg-[#1a4d6d] font-bold text-white dark:bg-[#2d6d8f]"
-                      : "font-medium text-zinc-700 hover:bg-zinc-100 hover:text-[#1a4d6d] dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-[#7eb8d4]",
+                      ? "bg-[#184D6C] font-bold text-white dark:bg-[#2d6d8f]"
+                      : "font-medium text-zinc-700 hover:bg-zinc-100 hover:text-[#184D6C] dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-[#7eb8d4]",
                   ].join(" ")}
                 >
                   {label(item.en, item.km)}
@@ -163,7 +163,7 @@ export default function Header() {
                 >
                   <span lang="km">ភាសាខ្មែរ (Khmer)</span>
                   {locale === "km" ? (
-                    <span className="text-xs text-[#1a4d6d] dark:text-[#7eb8d4]" aria-hidden>
+                    <span className="text-xs text-[#184D6C] dark:text-[#7eb8d4]" aria-hidden>
                       ✓
                     </span>
                   ) : null}
@@ -182,7 +182,7 @@ export default function Header() {
                 >
                   <span lang="en">English</span>
                   {locale === "en" ? (
-                    <span className="text-xs text-[#1a4d6d] dark:text-[#7eb8d4]" aria-hidden>
+                    <span className="text-xs text-[#184D6C] dark:text-[#7eb8d4]" aria-hidden>
                       ✓
                     </span>
                   ) : null}
