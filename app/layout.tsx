@@ -4,6 +4,8 @@ import favicon from "./favicon.jpg";
 
 import "./globals.css";
 
+import Header from "@/shared/components/layout/Header";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,7 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={rootClassName}>
-      <body className={bodyClassName}>{children}</body>
+      <body className={bodyClassName}>
+        <Header />
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
