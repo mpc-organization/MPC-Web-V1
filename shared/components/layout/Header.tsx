@@ -8,6 +8,7 @@ import { useEffect, useId, useState } from "react";
 import logo from "@/public/assets/MPC_Logo.png";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
+const LOCALE_EVENT = "mpc-locale-change";
 
 type Locale = "en" | "km";
 
@@ -73,12 +74,15 @@ export default function Header() {
     const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
     if (stored === "en" || stored === "km") {
       setLocale(stored);
+      document.documentElement.lang = stored;
     }
   }, []);
 
   const setLocalePersist = (next: Locale) => {
     setLocale(next);
     window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
+    document.documentElement.lang = next;
+    window.dispatchEvent(new CustomEvent<Locale>(LOCALE_EVENT, { detail: next }));
   };
 
   const label = (en: string, km: string) => (locale === "en" ? en : km);
