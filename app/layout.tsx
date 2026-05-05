@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import favicon from "./favicon.jpg";
+import favicon from "./favicon.png";
 
 import "./globals.css";
 

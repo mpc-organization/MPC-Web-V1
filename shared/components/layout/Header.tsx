@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
-import logo from "@/app/favicon.jpg";
+import logo from "@/public/assets/MPC_Logo.png";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
 
@@ -85,7 +85,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 shadow-[0_1px_5px_rgba(24,77,108,0.22)] backdrop-blur-md dark:bg-zinc-950/90 dark:shadow-[0_1px_5px_rgba(24,77,108,0.35)]">
-      <div className="mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex h-16 flex-wrap items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
           className="flex items-center gap-3 text-[#184D6C] transition-opacity hover:opacity-90 dark:text-[#5a9ab8]"
@@ -93,9 +93,9 @@ export default function Header() {
           <Image
             src={logo}
             alt="MPC Organization"
-            width={44}
-            height={44}
-            className="size-11 shrink-0 rounded-full object-cover ring-1 ring-zinc-200/80 dark:ring-zinc-700"
+            width={60}
+            height={80}
+            className="h-14 w-auto shrink-0 object-contain"
             priority
           />
           <span className="hidden text-sm font-semibold tracking-wide sm:inline">
