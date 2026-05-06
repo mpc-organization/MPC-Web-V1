@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import logo from "@/public/assets/MPC_Logo.png";
 import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
+import visionBanner from "@/public/assets/image/visionBanner.png";
 import { STRATEGIES } from "@/shared/data/strategies";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
@@ -67,18 +67,27 @@ export default function HomePage() {
       ? "យើងផ្តោតលើការបំពេញចន្លោះដែលគ្រួសារ និងសហគមន៍ជួបប្រទះ រួមមានការគាំទ្រការចិញ្ចឹមកូនដោយវិជ្ជាជីវៈ ការការពារកុមារ ការចូលប្រើចំណេះដឹងដែលងាយយល់ និងការសម្របសម្រួលរវាងដៃគូ ដើម្បីឲ្យកុមារទទួលបានការជួយទាន់ពេល និងរស់នៅក្នុងបរិយាកាសដែលមានសុវត្ថិភាព។"
       : "We focus on gaps families and communities face around positive parenting, child protection, access to practical knowledge, and coordinated local action—so children get timely support and grow in safer, more nurturing environments.";
 
+  const visionTitle = locale === "km" ? "ទស្សនវិស័យ" : "Vision";
+
+  const visionDescription =
+    locale === "km"
+      ? "យើងមានទស្សនវិស័យចង់បានសង្គមមួយដែលពោរពេញដោយការយកចិត្តទុកដាក់ ដែលកុមារត្រូវបានការពារ គ្រួសារមានចំណេះដឹង និងសហគមន៍មានទំនុកចិត្តរួមគ្នាចាត់វិធានកម្ម។"
+      : "Our vision is a caring society where children are protected, families are informed, and communities are confident to take action together.";
+
+  const visionLearnMore = locale === "km" ? "ស្វែងយល់បន្ថែម" : "Learn more";
+
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-      <section className="relative flex min-h-[calc(100vh-64px)] w-full items-center overflow-hidden px-4 py-10 sm:px-8">
+      <section className="relative flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-full overflow-hidden">
         <Image
           src={orgBriefBanner}
           alt="Briefly about organization banner"
           fill
           priority
-          className="object-cover object-center"
+          className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
         />
         <div className="absolute inset-0 bg-white/25" />
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-center px-4 py-8 sm:px-8">
           <div className="relative max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
             <h1 className="text-3xl font-bold text-[#184D6C] sm:text-4xl lg:text-5xl">
               {briefTitle}
@@ -103,36 +112,33 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#dae7ee] via-[#eaf2f6] to-[#cfe1ea] p-6 sm:p-8">
-          <div className="pointer-events-none absolute -left-8 top-8 opacity-25">
-            <Image
-              src={logo}
-              alt=""
-              className="h-52 w-auto object-contain"
-              aria-hidden
-            />
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#dae7ee] via-[#eaf2f6] to-[#cfe1ea] p-6 sm:p-8">
-          <div className="pointer-events-none absolute -left-8 top-8 opacity-25">
-            <Image src={logo} alt="" className="h-52 w-auto object-contain" aria-hidden />
-          </div>
-          <div className="relative ml-auto max-w-xl rounded-2xl bg-white/85 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-            <h2 className="text-2xl font-bold text-[#184D6C] sm:text-3xl">
-              ទស្សនវិស័យ
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-zinc-700 sm:text-base">
-              Our vision is a caring society where children are protected,
-              families are informed, and communities are confident to take
-              action together.
-            </p>
-            <Link
-              href="/vision"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#184D6C] underline-offset-4 hover:underline"
-            >
-              Learn more <span aria-hidden>→</span>
-            </Link>
+        <section
+          className="relative left-1/2 flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden"
+          lang={locale === "km" ? "km" : "en"}
+        >
+          <Image
+            src={visionBanner}
+            alt="Vision banner"
+            fill
+            className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-white/25" />
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-center px-4 py-8 sm:px-8">
+            <div className="relative ml-auto max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
+              <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+                {visionTitle}
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9">
+                {visionDescription}
+              </p>
+              <Link
+                href="/vision"
+                className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-[#184D6C] underline-offset-4 hover:underline"
+              >
+                {visionLearnMore} <span aria-hidden>→</span>
+              </Link>
+            </div>
           </div>
         </section>
 

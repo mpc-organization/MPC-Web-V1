@@ -88,7 +88,7 @@ export default function Header() {
   const label = (en: string, km: string) => (locale === "en" ? en : km);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 shadow-[0_1px_5px_rgba(24,77,108,0.22)] backdrop-blur-md dark:bg-zinc-950/90 dark:shadow-[0_1px_5px_rgba(24,77,108,0.35)]">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/90 shadow-[0_1px_5px_rgba(24,77,108,0.22)] backdrop-blur-md dark:bg-zinc-950/90 dark:shadow-[0_1px_5px_rgba(24,77,108,0.35)]">
       <div className="mx-auto flex h-16 flex-wrap items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
