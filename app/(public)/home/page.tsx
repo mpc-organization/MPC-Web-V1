@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
 import visionBanner from "@/public/assets/image/visionBanner.png";
 import { STRATEGIES } from "@/shared/data/strategies";
+import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
 const LOCALE_EVENT = "mpc-locale-change";
@@ -76,6 +77,33 @@ export default function HomePage() {
 
   const visionLearnMore = locale === "km" ? "ស្វែងយល់បន្ថែម" : "Learn more";
 
+  const targetLocationsTitle = locale === "km" ? "ទីតាំងគោលលក្ష្យ" : "Target Locations";
+
+  const targetLocationsSubtitle =
+    locale === "km" ? "សមតថភាពបង្កើត" : "Capacity Building";
+
+  const targetLocationsDescription =
+    locale === "km"
+      ? "យើងកំពុងង្ហាក់ធ្វើការក្នុងស្រុកខ្ពង់ក្រោមដែលមានតម្រូវការខ្ពស់ និងសក្ដានុពលដ៏ច្រើនក្នុងការពង្រីកសេវាកម្ម។"
+      : "We are building capacity in provinces with high needs and significant potential for service expansion.";
+
+  const locationBullets =
+    locale === "km"
+      ? [
+          "ការវាយតម្លៃលម្អិត",
+          "ការសហការជាមួយដៃគូ",
+          "ការលើកកម្ពស់ការយល់ដឹង"
+        ]
+      : [
+          "Detailed assessment",
+          "Partner collaboration",
+          "Community awareness promotion"
+        ];
+
+  const footerCopyright = locale === "km"
+    ? "© ២០២៦ មជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC)។ សិទ្ធិគ្រប់យ៉ាងរក្សាទុក។"
+    : "© 2026 Mluop Promviheathor Center Organization (MPC). All rights reserved.";
+
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <section className="relative flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-full overflow-hidden">
@@ -144,9 +172,6 @@ export default function HomePage() {
 
         <section className="space-y-5">
           <h2 className="text-2xl font-bold text-[#184D6C]">អ្វីដែលយើងធ្វើ</h2>
-          <p className="text-zinc-600 dark:text-zinc-300">
-            Four focus strategies that drive our impact.
-          </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STRATEGIES.map((strategy, index) => (
               <Link
@@ -174,7 +199,84 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        <section
+          className="relative left-1/2 flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-screen max-w-[100vw] -translate-x-1/2 flex-col overflow-hidden bg-white dark:bg-zinc-900"
+          lang={locale === "km" ? "km" : "en"}
+        >
+          <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6 lg:py-14">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+                {targetLocationsTitle}
+              </h2>
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold text-zinc-700 dark:text-zinc-300">
+                  {targetLocationsSubtitle}
+                </h3>
+                <p className="max-w-3xl text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9 dark:text-zinc-300">
+                  {targetLocationsDescription}
+                </p>
+                <ul className="list-inside list-disc space-y-2 text-lg text-zinc-600 dark:text-zinc-400">
+                  {locationBullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="grid flex-1 gap-6 md:grid-cols-3">
+              {TARGET_LOCATIONS.map((location) => (
+                <div
+                  key={location.id}
+                  className="rounded-xl border-2 border-zinc-200 p-6 dark:border-zinc-700"
+                >
+                  <div className="mb-4 inline-block rounded-full bg-[#184D6C] px-4 py-1 text-sm font-semibold text-white">
+                    {location.status}
+                  </div>
+                  <h3 className="mt-3 text-2xl font-bold text-[#184D6C]">
+                    {location.title}
+                  </h3>
+                  <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {location.description.map((desc) => (
+                      <li key={desc}>{desc}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer className="border-t border-zinc-200 bg-[#184D6C] text-white dark:border-zinc-700 dark:bg-zinc-950">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-8 px-4 py-12 sm:px-6 md:flex-row">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-bold">
+              Mluop Promviheathor Center (MPC)
+            </h3>
+            <p className="max-w-sm text-sm text-white/80">
+              Supporting families and communities to protect children and build stronger futures.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4 text-center md:text-right">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold">Contact</p>
+              <p className="text-sm text-white/80">
+                Email: info@mpc-kh.org
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-6 sm:px-6">
+            <p className="text-center text-xs text-white/70">
+              {footerCopyright}
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
