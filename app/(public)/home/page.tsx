@@ -77,7 +77,7 @@ export default function HomePage() {
 
   const visionLearnMore = locale === "km" ? "ស្វែងយល់បន្ថែម" : "Learn more";
 
-  const targetLocationsTitle = locale === "km" ? "ទីតាំងគោលលក្ష្យ" : "Target Locations";
+  const targetLocationsTitle = locale === "km" ? "ទីតាំងគោលដៅ" : "Target Locations";
 
   const targetLocationsSubtitle =
     locale === "km" ? "សមតថភាពបង្កើត" : "Capacity Building";
@@ -201,10 +201,10 @@ export default function HomePage() {
         </section>
 
         <section
-          className="relative left-1/2 flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-screen max-w-[100vw] -translate-x-1/2 flex-col overflow-hidden bg-white dark:bg-zinc-900"
+          className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 bg-white py-10 dark:bg-zinc-900 sm:py-14"
           lang={locale === "km" ? "km" : "en"}
         >
-          <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6 lg:py-14">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:py-0">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
                 {targetLocationsTitle}
@@ -224,7 +224,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid flex-1 gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3">
               {TARGET_LOCATIONS.map((location) => (
                 <div
                   key={location.id}
