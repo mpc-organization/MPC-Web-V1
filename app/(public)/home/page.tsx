@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
+import logo from "@/public/assets/MPC_Logo.png";
 import visionBanner from "@/public/assets/image/visionBanner.png";
 import { STRATEGIES } from "@/shared/data/strategies";
 import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
@@ -13,6 +14,22 @@ const LOCALE_STORAGE_KEY = "mpc-ui-locale";
 const LOCALE_EVENT = "mpc-locale-change";
 
 type Locale = "en" | "km";
+
+function ContactIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">
+      {children}
+    </span>
+  );
+}
+
+function SocialIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-zinc-200 text-zinc-700 transition-colors group-hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-300 dark:group-hover:bg-zinc-600">
+      {children}
+    </span>
+  );
+}
 
 export default function HomePage() {
   const [locale, setLocale] = useState<Locale>("en");
@@ -100,6 +117,15 @@ export default function HomePage() {
     : "© 2026 Mluop Promviheathor Center Organization (MPC). All rights reserved.";
 
   const strategyLabel = locale === "km" ? "យុទ្ធសាស្ត្រ" : "Strategy";
+
+  const footerLabels = {
+    contact: locale === "km" ? "ទំនាក់ទំនង" : "Contact",
+    social: locale === "km" ? "បណ្តាញសង្គម" : "Social Media",
+    address:
+      locale === "km"
+        ? "អាសយដ្ឋាន៖ ភូមិ/សង្កាត់, រាជធានីភ្នំពេញ, កម្ពុជា"
+        : "Address: Phnom Penh, Cambodia",
+  };
 
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -244,32 +270,91 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t border-zinc-200 bg-[#184D6C] text-white dark:border-zinc-700 dark:bg-zinc-950">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-8 px-4 py-12 sm:px-6 md:flex-row">
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-bold">
-              Mluop Promviheathor Center (MPC)
-            </h3>
-            <p className="max-w-sm text-sm text-white/80">
-              Supporting families and communities to protect children and build stronger futures.
-            </p>
-          </div>
+      <footer className="border-t border-zinc-200 dark:border-zinc-700">
+        <div className="mx-auto w-full max-w-7xl bg-white px-4 py-12 dark:bg-zinc-900 sm:px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div className="flex flex-col items-center gap-4 text-center text-zinc-900 dark:text-zinc-100">
+              <Image
+                src={logo}
+                alt="MPC Organization logo"
+                className="mx-auto h-40 w-40 object-contain"
+              />
+            </div>
 
-          <div className="flex flex-col gap-4 text-center md:text-right">
-            <div className="space-y-2">
-              <p className="text-sm font-semibold">Contact</p>
-              <p className="text-sm text-white/80">
-                Email: info@mpc-kh.org
-              </p>
+            <div className="flex flex-col gap-4 text-center text-zinc-900 dark:text-zinc-100 md:text-left">
+              <h3 className="text-lg font-bold">{footerLabels.contact}</h3>
+              <div className="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
+                <div className="flex items-center justify-center gap-3 md:justify-start">
+                  <ContactIcon>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                      <title>Phone</title>
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.11 1h3a2 2 0 0 1 2 1.72c.12.89.32 1.75.59 2.58a2 2 0 0 1-.45 2.11L8.1 8.56a16 16 0 0 0 6.34 6.34l1.15-1.15a2 2 0 0 1 2.11-.45c.83.27 1.69.47 2.58.59A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </ContactIcon>
+                  <a href="tel:+85512345678" className="hover:underline">
+                    +855 12 345 678
+                  </a>
+                </div>
+                <div className="flex items-center justify-center gap-3 md:justify-start">
+                  <ContactIcon>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                      <title>Email</title>
+                      <path d="M4 4h16v16H4z" />
+                      <path d="m22 6-10 7L2 6" />
+                    </svg>
+                  </ContactIcon>
+                  <a href="mailto:mlobpromviheathor@gmail.com" className="hover:underline">
+                    mlobpromviheathor@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center justify-center gap-3 md:justify-start">
+                  <ContactIcon>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                      <title>Location</title>
+                      <path d="M12 21s6-5.33 6-10a6 6 0 1 0-12 0c0 4.67 6 10 6 10z" />
+                      <circle cx="12" cy="11" r="2" />
+                    </svg>
+                  </ContactIcon>
+                  <span>{footerLabels.address}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 text-center text-zinc-900 dark:text-zinc-100 md:text-left">
+              <h3 className="text-lg font-bold">{footerLabels.social}</h3>
+              <div className="flex items-center justify-center gap-4 md:justify-start">
+                <a href="https://www.facebook.com" aria-label="Facebook" className="group">
+                  <SocialIcon>
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                      <title>Facebook</title>
+                      <path d="M13 22v-8h2.7l.4-3H13V9.1c0-.9.3-1.5 1.6-1.5H16V5a22 22 0 0 0-2.2-.1C11.6 4.9 10 6.6 10 9v2H7v3h3v8h3z" />
+                    </svg>
+                  </SocialIcon>
+                </a>
+                <a href="https://www.youtube.com" aria-label="YouTube" className="group">
+                  <SocialIcon>
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                      <title>YouTube</title>
+                      <path d="M21.8 8.5s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.1 5.2 12 5.2 12 5.2h0s-4.1 0-6.9.3c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 10.1 2 11.6v.9c0 1.5.2 3.1.2 3.1s.2 1.5.8 2.1c.8.8 1.9.8 2.4.9 1.8.2 7.6.3 7.6.3s4.1 0 6.9-.3c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.1v-.9c0-1.5-.2-3.1-.2-3.1zM10 14.7V8.9l5.6 2.9-5.6 2.9z" />
+                    </svg>
+                  </SocialIcon>
+                </a>
+                <a href="https://www.linkedin.com" aria-label="LinkedIn" className="group">
+                  <SocialIcon>
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                      <title>LinkedIn</title>
+                      <path d="M6.94 6.5a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88ZM5.2 8.2h3.5V20H5.2V8.2Zm5.6 0h3.4v1.6h.1c.5-1 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.5V20h-3.5v-5.2c0-1.2 0-2.8-1.8-2.8s-2 1.4-2 2.7V20h-3.5V8.2Z" />
+                    </svg>
+                  </SocialIcon>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-4 py-6 sm:px-6">
-            <p className="text-center text-xs text-white/70">
-              {footerCopyright}
-            </p>
+        <div className="border-t border-zinc-200 bg-[#184D6C] text-white dark:border-zinc-700 dark:bg-zinc-950">
+          <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <p className="text-center text-xs text-white/70">{footerCopyright}</p>
           </div>
         </div>
       </footer>
