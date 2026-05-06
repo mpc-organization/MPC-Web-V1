@@ -59,6 +59,14 @@ export default function HomePage() {
       ? "អង្គការ MPC គាំទ្រគ្រួសារ និងសហគមន៍ តាមរយៈការការពារកុមារ ការគាំទ្រការចិញ្ចឹមកូន និងការអប់រំជាក់ស្តែង ដើម្បីបង្កើតអនាគតដែលមានសុវត្ថិភាព និងសុខុមាលភាពល្អសម្រាប់កុមារគ្រប់រូប។"
       : "Mluop Promviheathor Center Organization (MPC) supports families and communities through child protection, parenting support, and practical education to create safer, healthier futures for every child.";
 
+  const solveTitle =
+    locale === "km" ? "អ្វីដែលយើងដោះស្រាយ" : "What we solve";
+
+  const solveDescription =
+    locale === "km"
+      ? "យើងផ្តោតលើការបំពេញចន្លោះដែលគ្រួសារ និងសហគមន៍ជួបប្រទះ រួមមានការគាំទ្រការចិញ្ចឹមកូនដោយវិជ្ជាជីវៈ ការការពារកុមារ ការចូលប្រើចំណេះដឹងដែលងាយយល់ និងការសម្របសម្រួលរវាងដៃគូ ដើម្បីឲ្យកុមារទទួលបានការជួយទាន់ពេល និងរស់នៅក្នុងបរិយាកាសដែលមានសុវត្ថិភាព។"
+      : "We focus on gaps families and communities face around positive parenting, child protection, access to practical knowledge, and coordinated local action—so children get timely support and grow in safer, more nurturing environments.";
+
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <section className="relative flex min-h-[calc(100vh-64px)] w-full items-center overflow-hidden px-4 py-10 sm:px-8">
@@ -72,10 +80,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-white/25" />
         <div className="mx-auto w-full max-w-6xl">
           <div className="relative max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-            <h1 className="text-2xl font-bold text-[#184D6C] sm:text-3xl">
+            <h1 className="text-3xl font-bold text-[#184D6C] sm:text-4xl lg:text-5xl">
               {briefTitle}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-zinc-700 sm:text-base">
+            <p className="mt-6 text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9">
               {briefDescription}
             </p>
           </div>
@@ -83,38 +91,16 @@ export default function HomePage() {
       </section>
 
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10 sm:px-6 lg:py-14">
-        <section className="space-y-5 rounded-2xl bg-white p-6 shadow-sm sm:p-8 dark:bg-zinc-900">
-          <h2 className="text-2xl font-bold text-[#184D6C]">អ្វីដែលយើងដោះស្រាយ</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <article className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-700">
-              <h3 className="font-semibold">Parenting Challenges</h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                We guide caregivers with practical methods for positive
-                parenting and child development.
-              </p>
-            </article>
-            <article className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-700">
-              <h3 className="font-semibold">Child Protection Gaps</h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                We connect families and communities to support systems that keep
-                children safe.
-              </p>
-            </article>
-            <article className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-700">
-              <h3 className="font-semibold">Limited Access To Knowledge</h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                We provide easy-to-understand resources in local context and
-                language.
-              </p>
-            </article>
-            <article className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-700">
-              <h3 className="font-semibold">Weak Community Coordination</h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                We bring stakeholders together to respond earlier and better for
-                every child.
-              </p>
-            </article>
-          </div>
+        <section
+          className="space-y-5 rounded-2xl bg-white p-8 shadow-sm sm:p-10 dark:bg-zinc-900"
+          lang={locale === "km" ? "km" : "en"}
+        >
+          <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+            {solveTitle}
+          </h2>
+          <p className="max-w-3xl text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9 dark:text-zinc-300">
+            {solveDescription}
+          </p>
         </section>
 
         <section className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#dae7ee] via-[#eaf2f6] to-[#cfe1ea] p-6 sm:p-8">
