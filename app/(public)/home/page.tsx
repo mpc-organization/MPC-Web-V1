@@ -82,11 +82,6 @@ export default function HomePage() {
   const targetLocationsSubtitle =
     locale === "km" ? "សមតថភាពបង្កើត" : "Capacity Building";
 
-  const targetLocationsDescription =
-    locale === "km"
-      ? "យើងកំពុងង្ហាក់ធ្វើការក្នុងស្រុកខ្ពង់ក្រោមដែលមានតម្រូវការខ្ពស់ និងសក្ដានុពលដ៏ច្រើនក្នុងការពង្រីកសេវាកម្ម។"
-      : "We are building capacity in provinces with high needs and significant potential for service expansion.";
-
   const locationBullets =
     locale === "km"
       ? [
@@ -103,6 +98,8 @@ export default function HomePage() {
   const footerCopyright = locale === "km"
     ? "© ២០២៦ មជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC)។ សិទ្ធិគ្រប់យ៉ាងរក្សាទុក។"
     : "© 2026 Mluop Promviheathor Center Organization (MPC). All rights reserved.";
+
+  const strategyLabel = locale === "km" ? "យុទ្ធសាស្ត្រ" : "Strategy";
 
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -171,7 +168,9 @@ export default function HomePage() {
         </section>
 
         <section className="space-y-5">
-          <h2 className="text-2xl font-bold text-[#184D6C]">អ្វីដែលយើងធ្វើ</h2>
+          <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+            {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STRATEGIES.map((strategy, index) => (
               <Link
@@ -186,13 +185,13 @@ export default function HomePage() {
                     className="mx-auto h-28 w-auto object-contain"
                   />
                 </div>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#184D6C]">
-                  Strategy {index + 1}
+                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#184D6C]">
+                  {strategyLabel} {index + 1}
                 </p>
-                <h3 className="mt-1 text-base font-bold text-zinc-900 group-hover:text-[#184D6C] dark:text-zinc-100">
+                <h3 className="mt-1 text-xl font-bold text-zinc-900 group-hover:text-[#184D6C] dark:text-zinc-100">
                   {strategy.name}
                 </h3>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <p className="mt-2 text-base leading-7 text-zinc-600 dark:text-zinc-300">
                   {strategy.shortDescription}
                 </p>
               </Link>
@@ -213,10 +212,7 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-zinc-700 dark:text-zinc-300">
                   {targetLocationsSubtitle}
                 </h3>
-                <p className="max-w-3xl text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9 dark:text-zinc-300">
-                  {targetLocationsDescription}
-                </p>
-                <ul className="list-inside list-disc space-y-2 text-lg text-zinc-600 dark:text-zinc-400">
+                <ul className="list-inside list-disc space-y-2 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
                   {locationBullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
@@ -231,13 +227,13 @@ export default function HomePage() {
                   className="rounded-xl border-2 border-zinc-200 p-6 dark:border-zinc-700"
                 >
                   <div className="mb-4 inline-block rounded-full bg-[#184D6C] px-4 py-1 text-sm font-semibold text-white">
-                    {location.status}
+                    {location.status[locale]}
                   </div>
-                  <h3 className="mt-3 text-2xl font-bold text-[#184D6C]">
-                    {location.title}
+                  <h3 className="mt-3 text-xl font-bold text-[#184D6C] sm:text-2xl">
+                    {location.title[locale]}
                   </h3>
-                  <ul className="mt-4 list-inside list-disc space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    {location.description.map((desc) => (
+                  <ul className="mt-4 list-inside list-disc space-y-2 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+                    {location.description[locale].map((desc) => (
                       <li key={desc}>{desc}</li>
                     ))}
                   </ul>
