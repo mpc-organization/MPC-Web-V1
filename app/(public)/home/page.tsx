@@ -140,17 +140,17 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-white/25" />
         <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-center px-4 py-8 sm:px-8">
           <div className="relative max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-            <h1 className="text-3xl font-bold text-[#184D6C] sm:text-4xl lg:text-5xl">
+            <h1 className={`text-3xl font-bold text-[#184D6C] sm:text-4xl lg:text-5xl ${locale === "km" ? "leading-[1.35] sm:leading-[1.3]" : ""}`}>
               {briefTitle}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9">
+            <p className={`mt-6 text-lg text-zinc-700 sm:text-xl ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
               {briefDescription}
             </p>
           </div>
         </div>
       </section>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10 sm:px-6 lg:py-14">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-10 sm:px-6 lg:pt-14">
         <section
           className="space-y-5 rounded-2xl bg-white p-8 shadow-sm sm:p-10 dark:bg-zinc-900"
           lang={locale === "km" ? "km" : "en"}
@@ -158,7 +158,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
             {solveTitle}
           </h2>
-          <p className="max-w-3xl text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9 dark:text-zinc-300">
+          <p className={`max-w-3xl text-lg text-zinc-700 sm:text-xl dark:text-zinc-300 ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
             {solveDescription}
           </p>
         </section>
@@ -180,7 +180,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
                 {visionTitle}
               </h2>
-              <p className="mt-4 text-lg leading-8 text-zinc-700 sm:text-xl sm:leading-9">
+              <p className={`mt-4 text-lg text-zinc-700 sm:text-xl ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
                 {visionDescription}
               </p>
               <Link
@@ -238,7 +238,7 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-zinc-700 dark:text-zinc-300">
                   {targetLocationsSubtitle}
                 </h3>
-                <ul className="list-inside list-disc space-y-2 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                <ul className={`list-inside list-disc space-y-3 text-lg text-zinc-600 dark:text-zinc-400 ${locale === "km" ? "leading-10" : ""}`}>
                   {locationBullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
@@ -258,7 +258,7 @@ export default function HomePage() {
                   <h3 className="mt-3 text-xl font-bold text-[#184D6C] sm:text-2xl">
                     {location.title[locale]}
                   </h3>
-                  <ul className="mt-4 list-inside list-disc space-y-2 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+                  <ul className={`mt-4 list-inside list-disc space-y-3 text-base text-zinc-600 dark:text-zinc-400 ${locale === "km" ? "leading-9" : ""}`}>
                     {location.description[locale].map((desc) => (
                       <li key={desc}>{desc}</li>
                     ))}
@@ -269,15 +269,14 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-zinc-200 dark:border-zinc-700">
-        <div className="mx-auto w-full max-w-7xl bg-white px-4 py-12 dark:bg-zinc-900 sm:px-6 lg:px-8">
+      <footer className="border-t border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
+        <div className="mx-auto w-full px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-3">
             <div className="flex flex-col items-center gap-4 text-center text-zinc-900 dark:text-zinc-100">
               <Image
                 src={logo}
                 alt="MPC Organization logo"
-                className="mx-auto h-40 w-40 object-contain"
+                className="mx-auto h-56 w-56 object-contain"
               />
             </div>
 
@@ -353,7 +352,7 @@ export default function HomePage() {
         </div>
 
         <div className="border-t border-zinc-200 bg-[#184D6C] text-white dark:border-zinc-700 dark:bg-zinc-950">
-          <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full px-4 py-6 sm:px-6 lg:px-8">
             <p className="text-center text-xs text-white/70">{footerCopyright}</p>
           </div>
         </div>
