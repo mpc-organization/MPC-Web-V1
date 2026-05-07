@@ -139,11 +139,11 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-white/25" />
         <div className="absolute z-10 left-[50px] top-1/2 -translate-y-1/2 w-[700px]">
-          <div className="rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-            <h1 className={`text-[45px] font-semibold text-[#184D6C] ${locale === "km" ? "leading-[1.35] sm:leading-[1.3]" : ""}`}>
+          <div className="rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6" style={{ fontFamily: "'Kantumruy Pro', sans-serif" }}>
+            <h1 className={`font-semibold text-[#184D6C] ${locale === "km" ? "text-[45px] leading-[1.35] sm:leading-[1.3]" : "text-[30px]"}`}>
               {briefTitle}
             </h1>
-            <p className={`mt-6 text-[25px] font-medium text-[#184D6C] ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
+            <p className={`mt-6 text-[18px] font-medium text-[#184D6C] ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
               {briefDescription}
             </p>
           </div>
