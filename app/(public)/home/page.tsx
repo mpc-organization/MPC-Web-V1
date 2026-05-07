@@ -70,11 +70,11 @@ export default function HomePage() {
   const briefTitle =
     locale === "km"
       ? "អង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌"
-      : "About Mluop Promviheathor Center Organization";
+      : "Mluop Promviheathor Center Organization";
 
   const briefDescription =
     locale === "km"
-      ? "អង្គការ MPC គាំទ្រគ្រួសារ និងសហគមន៍ តាមរយៈការការពារកុមារ ការគាំទ្រការចិញ្ចឹមកូន និងការអប់រំជាក់ស្តែង ដើម្បីបង្កើតអនាគតដែលមានសុវត្ថិភាព និងសុខុមាលភាពល្អសម្រាប់កុមារគ្រប់រូប។"
+      ? "យើងជាអង្គការក្នុងស្រុក មិនរកប្រាក់ចំណូល ដែលមានទីតាំង ស្ថិតនៅស្រុកស្រែអំបិល ខេត្តកោះកុងបានចុះបញ្ជីជាមួយក្រសួងមហាផ្ទៃ តាំងពីឆ្នាំ២០០៥ រហូតដល់បច្ចុប្បន្ន"
       : "Mluop Promviheathor Center Organization (MPC) supports families and communities through child protection, parenting support, and practical education to create safer, healthier futures for every child.";
 
   const solveTitle =
