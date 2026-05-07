@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
 import logo from "@/public/assets/MPC_Logo.png";
 import visionBanner from "@/public/assets/image/visionBanner.png";
 import { STRATEGIES } from "@/shared/data/strategies";
 import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
+import { MpcOrganizationBanner } from "@/app/features/mpcOrganizationBanner";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
 const LOCALE_EVENT = "mpc-locale-change";
@@ -129,26 +129,10 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-      <section className="relative flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-full overflow-hidden">
-        <Image
-          src={orgBriefBanner}
-          alt="Briefly about organization banner"
-          fill
-          priority
-          className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
-        />
-        <div className="absolute inset-0 bg-white/25" />
-        <div className="absolute z-10 left-[50px] top-1/2 -translate-y-1/2 w-[700px]">
-          <div className="rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6" style={{ fontFamily: "'Kantumruy Pro', sans-serif" }}>
-            <h1 className={`font-semibold text-[#184D6C] ${locale === "km" ? "text-[45px] leading-[1.35] sm:leading-[1.3]" : "text-[30px]"}`}>
-              {briefTitle}
-            </h1>
-            <p className={`mt-6 font-base text-[#184D6C] ${locale === "km" ? "text-[25px] leading-10 sm:leading-[2.2rem]" : "text-[18px]"}`}>
-              {briefDescription}
-            </p>
-          </div>
-        </div>
-      </section>
+      <MpcOrganizationBanner
+        briefTitle={briefTitle}
+        briefDescription={briefDescription}
+      />
 
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-10 sm:px-6 lg:pt-14">
         <section
