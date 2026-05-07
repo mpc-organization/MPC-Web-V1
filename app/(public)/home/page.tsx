@@ -69,7 +69,7 @@ export default function HomePage() {
 
   const briefTitle =
     locale === "km"
-      ? "អំពីអង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌"
+      ? "អង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌"
       : "About Mluop Promviheathor Center Organization";
 
   const briefDescription =
@@ -138,12 +138,12 @@ export default function HomePage() {
           className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
         />
         <div className="absolute inset-0 bg-white/25" />
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-center px-4 py-8 sm:px-8">
-          <div className="relative max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-            <h1 className={`text-3xl font-bold text-[#184D6C] sm:text-4xl lg:text-5xl ${locale === "km" ? "leading-[1.35] sm:leading-[1.3]" : ""}`}>
+        <div className="absolute z-10 left-[50px] top-1/2 -translate-y-1/2 w-[700px]">
+          <div className="rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
+            <h1 className={`text-[45px] font-semibold text-[#184D6C] ${locale === "km" ? "leading-[1.35] sm:leading-[1.3]" : ""}`}>
               {briefTitle}
             </h1>
-            <p className={`mt-6 text-lg text-zinc-700 sm:text-xl ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
+            <p className={`mt-6 text-[25px] font-medium text-[#184D6C] ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
               {briefDescription}
             </p>
           </div>
