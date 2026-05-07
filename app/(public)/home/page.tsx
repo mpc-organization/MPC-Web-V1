@@ -143,7 +143,7 @@ export default function HomePage() {
             <h1 className={`font-semibold text-[#184D6C] ${locale === "km" ? "text-[45px] leading-[1.35] sm:leading-[1.3]" : "text-[30px]"}`}>
               {briefTitle}
             </h1>
-            <p className={`mt-6 text-[18px] font-medium text-[#184D6C] ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
+            <p className={`mt-6 font-base text-[#184D6C] ${locale === "km" ? "text-[25px] leading-10 sm:leading-[2.2rem]" : "text-[18px]"}`}>
               {briefDescription}
             </p>
           </div>
