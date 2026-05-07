@@ -89,7 +89,7 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white/90 shadow-[0_1px_5px_rgba(24,77,108,0.22)] backdrop-blur-md dark:bg-zinc-950/90 dark:shadow-[0_1px_5px_rgba(24,77,108,0.35)]">
-      <div className="mx-auto flex h-16 flex-wrap items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 flex-wrap items-center justify-between gap-4 pl-[50px] pr-[50px]">
         <Link
           href="/"
           className="flex items-center gap-3 text-[#184D6C] transition-opacity hover:opacity-90 dark:text-[#5a9ab8]"
@@ -102,9 +102,6 @@ export default function Header() {
             className="h-14 w-auto shrink-0 object-contain"
             priority
           />
-          <span className="hidden text-sm font-semibold tracking-wide sm:inline">
-            MPC ORG
-          </span>
         </Link>
 
         <div className="flex flex-1 flex-wrap items-center justify-end gap-2 sm:gap-3">
