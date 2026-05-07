@@ -55,7 +55,7 @@ export function MpcOrganizationBanner({
   }, []);
 
   return (
-    <section className="relative flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-full overflow-hidden">
+    <section className="relative flex h-[50vh] min-h-[50vh] w-full overflow-hidden sm:h-[calc(100dvh-64px)] sm:min-h-[calc(100vh-64px)]">
       <Image
         src={orgBriefBanner}
         alt="Briefly about organization banner"
@@ -64,25 +64,25 @@ export function MpcOrganizationBanner({
         className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
       />
       <div className="absolute inset-0 bg-white/25" />
-      <div className="absolute z-10 left-[50px] top-1/2 -translate-y-1/2 w-[700px]">
+      <div className="absolute z-10 left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[700px] -translate-x-1/2 -translate-y-1/2 sm:left-8 sm:w-[min(700px,calc(100%-4rem))] sm:max-w-[700px] sm:translate-x-0 lg:left-[50px] lg:w-[700px] lg:translate-x-0">
         <div
-          className="rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6"
+          className="rounded-2xl bg-white/75 p-4 shadow-lg backdrop-blur-sm sm:p-6"
           style={{ fontFamily: "'Kantumruy Pro', sans-serif" }}
         >
           <h1
             className={`font-semibold text-[#184D6C] ${
               locale === "km"
-                ? "text-[45px] leading-[1.35] sm:leading-[1.3]"
-                : "text-[30px]"
+                ? "text-[24px] leading-[1.25] sm:text-[32px] sm:leading-[1.3] lg:text-[45px]"
+                : "text-[22px] leading-[1.25] sm:text-[26px] lg:text-[30px]"
             }`}
           >
             {briefTitle}
           </h1>
           <p
-            className={`mt-6 font-base text-[#184D6C] ${
+            className={`mt-4 font-medium text-[#184D6C] ${
               locale === "km"
-                ? "text-[25px] leading-10 sm:leading-[2.2rem]"
-                : "text-[18px]"
+                ? "text-[15px] leading-7 sm:text-[20px] sm:leading-8 lg:text-[25px] lg:leading-10"
+                : "text-[14px] leading-6 sm:text-[16px] lg:text-[18px]"
             }`}
           >
             {briefDescription}
