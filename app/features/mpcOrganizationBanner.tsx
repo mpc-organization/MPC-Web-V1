@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
@@ -55,7 +56,8 @@ export function MpcOrganizationBanner({
   }, []);
 
   return (
-    <section className="relative flex h-[50vh] min-h-[50vh] w-full overflow-hidden sm:h-[calc(100dvh-64px)] sm:min-h-[calc(100vh-64px)]">
+    <section className="relative flex h-[calc(100vh-64px)] w-full overflow-hidden bg-[#2c3e50]">
+      {/* Background Image */}
       <Image
         src={orgBriefBanner}
         alt="Briefly about organization banner"
@@ -63,30 +65,53 @@ export function MpcOrganizationBanner({
         priority
         className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
       />
-      <div className="absolute inset-0 bg-white/25" />
-      <div className="absolute z-10 left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[700px] -translate-x-1/2 -translate-y-1/2 sm:left-8 sm:w-[min(700px,calc(100%-4rem))] sm:max-w-[700px] sm:translate-x-0 lg:left-[50px] lg:w-[700px] lg:translate-x-0">
-        <div
-          className="rounded-2xl bg-white/75 p-4 shadow-lg backdrop-blur-sm sm:p-6"
-          style={{ fontFamily: "'Kantumruy Pro', sans-serif" }}
-        >
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-[#000000]/50" />
+      
+      {/* Content Container */}
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+        {/* Left Content */}
+        <div className="w-full md:w-1/2 lg:pr-8">
+          {/* Heart Icon and Label */}
+
+          {/* Main Heading */}
           <h1
-            className={`font-semibold text-[#184D6C] ${
+            className={`font-bold text-white ${
               locale === "km"
-                ? "text-[24px] leading-[1.25] sm:text-[32px] sm:leading-[1.3] lg:text-[45px]"
-                : "text-[22px] leading-[1.25] sm:text-[26px] lg:text-[30px]"
+                ? "text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl md:leading-[1.1]"
+                : "text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl md:leading-[1.1]"
             }`}
           >
             {briefTitle}
           </h1>
+
+          {/* Description */}
           <p
-            className={`mt-4 font-medium text-[#184D6C] ${
+            className={`mt-4 font-medium text-white/90 md:mt-6 ${
               locale === "km"
-                ? "text-[15px] leading-7 sm:text-[20px] sm:leading-8 lg:text-[25px] lg:leading-10"
-                : "text-[14px] leading-6 sm:text-[16px] lg:text-[18px]"
+                ? "text-base leading-7 sm:text-lg md:text-xl md:leading-8"
+                : "text-base leading-7 sm:text-lg md:text-xl md:leading-8"
             }`}
           >
             {briefDescription}
           </p>
+
+          {/* Action Buttons */}
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-8 md:gap-4">
+            <Link
+              href="/donation"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-6 py-3 font-semibold text-[#184D6C] transition-all hover:bg-[#ffffff]/80 active:scale-95 md:px-8 md:py-3"
+            >
+              About Us <span aria-hidden>→</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white px-6 py-3 font-semibold text-white transition-all hover:bg-white/10 active:scale-95 md:px-8 md:py-3"
+            >
+              Contact Now <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
