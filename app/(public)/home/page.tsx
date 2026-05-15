@@ -65,14 +65,12 @@ export default function HomePage() {
   const solveSecondaryImage =
     "https://media.istockphoto.com/id/2096480418/photo/group-of-multi-cultural-children-friends-linking-arms-looking-down-into-camera.jpg?s=612x612&w=0&k=20&c=H0-_W5BfzoBd8VqKwsj353-25GCwsF5XRHVzitJ4ffQ=";
 
-  const visionTitle = locale === "km" ? "ទស្សនវិស័យ" : "Vision";
-
   const visionDescription =
     locale === "km"
       ? "យើងមានទស្សនវិស័យចង់បានសង្គមមួយដែលពោរពេញដោយការយកចិត្តទុកដាក់ ដែលកុមារត្រូវបានការពារ គ្រួសារមានចំណេះដឹង និងសហគមន៍មានទំនុកចិត្តរួមគ្នាចាត់វិធានកម្ម។"
       : "Our vision is a caring society where children are protected, families are informed, and communities are confident to take action together.";
 
-  const visionLearnMore = locale === "km" ? "ស្វែងយល់បន្ថែម" : "Learn more";
+  
 
   const targetLocationsTitle = locale === "km" ? "ទីតាំងគោលដៅ" : "Target Locations";
 
@@ -114,7 +112,7 @@ export default function HomePage() {
         briefDescription={briefDescription}
       />
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 sm:px-6">
+      <main className="mx-auto flex w-full max-w-6xl flex-col px-4 sm:px-6">
         <section
           className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-white min-h-[calc(100dvh-64px)] dark:bg-zinc-900"
           lang={locale === "km" ? "km" : "en"}
@@ -196,34 +194,54 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section
-          className="relative left-1/2 flex h-[calc(100dvh-64px)] min-h-[calc(100vh-64px)] w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden"
-          lang={locale === "km" ? "km" : "en"}
-        >
-          <Image
-            src={visionBanner}
-            alt="Vision banner"
-            fill
-            className="border-0 object-cover object-center outline-none ring-0 scale-[1.02]"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-white/25" />
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-center px-4 py-8 sm:px-8">
-            <div className="relative ml-auto max-w-xl rounded-2xl bg-white/75 p-5 shadow-lg backdrop-blur-sm sm:p-6">
-              <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
-                {visionTitle}
-              </h2>
-              <p className={`mt-4 text-lg text-zinc-700 sm:text-xl ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
-                {visionDescription}
-              </p>
-              <Link
-                href="/vision"
-                className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-[#184D6C] underline-offset-4 hover:underline"
-              >
-                {visionLearnMore} <span aria-hidden>→</span>
-              </Link>
+        
+          <section
+            className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-white dark:bg-zinc-900"
+            lang={locale === "km" ? "km" : "en"}
+          >
+            <div className="mx-auto grid w-full grid-cols-1 items-stretch gap-0 py-8 sm:grid-cols-[0.8fr_1.2fr] sm:py-12">
+              <div className="relative overflow-hidden h-full">
+                <Image
+                  src={visionBanner}
+                  alt="Vision banner"
+                  fill
+                  className="hidden sm:block object-cover object-center"
+                  sizes="(min-width: 640px) 40vw, 100vw"
+                  priority
+                />
+                <Image
+                  src={solvePrimaryImage}
+                  alt="Vision mobile"
+                  fill
+                  className="block sm:hidden object-cover object-center"
+                  sizes="100vw"
+                  priority
+                />
+              </div>
+
+              <div className="flex items-stretch">
+                <div className="relative w-full bg-[#184D6C] px-8 py-12 sm:px-14 sm:py-20">
+                  <div className="z-10 max-w-lg">
+                    <p className="mb-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90">
+                      <span className="h-2.5 w-2.5 rounded-full bg-white" />
+                      Raising Your Helping Hands
+                    </p>
+                    <h2 className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl">
+                      Welcome To Save Life And Make A Positive Impact
+                    </h2>
+                    <p className="mb-8 text-base text-white/90">
+                      {visionDescription}
+                    </p>
+                    <Link
+                      href="/about"
+                      className="inline-flex items-center justify-center gap-2 bg-white px-6 py-3 text-base font-semibold text-[#184D6C] shadow-md"
+                    >
+                      About Us
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
         </section>
 
         <section className="space-y-5">
