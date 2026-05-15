@@ -67,7 +67,7 @@ export default function HomePage() {
 
   const visionDescription =
     locale === "km"
-      ? "យើងមានទស្សនវិស័យចង់បានសង្គមមួយដែលពោរពេញដោយការយកចិត្តទុកដាក់ ដែលកុមារត្រូវបានការពារ គ្រួសារមានចំណេះដឹង និងសហគមន៍មានទំនុកចិត្តរួមគ្នាចាត់វិធានកម្ម។"
+      ? "យើងចង់ឃើញសង្គមមួយដែលប្រជាជនគ្រប់រូប ជាពិសេសស្រី្ត កុមារ និងក្រុមងាយដែលងាយរងគ្រោះ មានភាពធន់ក្នុងការរស់នៅប្រកបដោយ ព្រហ្មវិហារធម៌ ភាពរីករាយជាមួយសិទ្ធិ ផ្សារភ្ជាបទៅ់នឹងធនធានធម្មជាតិ ប្រកបដោយចីរភាព។"
       : "Our vision is a caring society where children are protected, families are informed, and communities are confident to take action together.";
 
   
@@ -222,12 +222,8 @@ export default function HomePage() {
               <div className="flex items-stretch">
                 <div className="relative w-full bg-[#184D6C] px-8 py-12 sm:px-14 sm:py-20">
                   <div className="z-10 max-w-lg">
-                    <p className="mb-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90">
-                      <span className="h-2.5 w-2.5 rounded-full bg-white" />
-                      Raising Your Helping Hands
-                    </p>
                     <h2 className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl">
-                      Welcome To Save Life And Make A Positive Impact
+                      VISION
                     </h2>
                     <p className="mb-8 text-base text-white/90">
                       {visionDescription}
