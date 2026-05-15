@@ -11,7 +11,6 @@ import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
 import { MpcOrganizationBanner } from "@/app/features/mpcOrganizationBanner";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
-const LOCALE_EVENT = "mpc-locale-change";
 
 type Locale = "en" | "km";
 
@@ -25,7 +24,7 @@ function ContactIcon({ children }: { children: React.ReactNode }) {
 
 function SocialIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-zinc-200 text-zinc-700 transition-colors group-hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-300 dark:group-hover:bg-zinc-600">
+    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm dark:bg-zinc-800 dark:text-zinc-200">
       {children}
     </span>
   );
@@ -44,38 +43,12 @@ export default function HomePage() {
     setLocale(document.documentElement.lang === "km" ? "km" : "en");
   }, []);
 
-  useEffect(() => {
-    const onLocaleChange = (event: Event) => {
-      const localeEvent = event as CustomEvent<Locale>;
-      if (localeEvent.detail === "en" || localeEvent.detail === "km") {
-        setLocale(localeEvent.detail);
-      }
-    };
-
-    const onStorage = (event: StorageEvent) => {
-      if (event.key !== LOCALE_STORAGE_KEY) return;
-      if (event.newValue === "en" || event.newValue === "km") {
-        setLocale(event.newValue);
-      }
-    };
-
-    window.addEventListener(LOCALE_EVENT, onLocaleChange as EventListener);
-    window.addEventListener("storage", onStorage);
-    return () => {
-      window.removeEventListener(LOCALE_EVENT, onLocaleChange as EventListener);
-      window.removeEventListener("storage", onStorage);
-    };
-  }, []);
-
-  const briefTitle =
-    locale === "km"
-      ? "អង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌"
-      : "Mluop Promviheathor Center Organization";
-
   const briefDescription =
     locale === "km"
       ? "យើងជាអង្គការក្នុងស្រុក មិនរកប្រាក់ចំណូល ដែលមានទីតាំង ស្ថិតនៅស្រុកស្រែអំបិល ខេត្តកោះកុងបានចុះបញ្ជីជាមួយក្រសួងមហាផ្ទៃ តាំងពីឆ្នាំ២០០៥ រហូតដល់បច្ចុប្បន្ន"
       : "Mluop Promviheathor Center Organization (MPC) supports families and communities through child protection, parenting support, and practical education to create safer, healthier futures for every child.";
+
+    const briefTitle = locale === "km" ? "អំពី MPC" : "About MPC";
 
   const solveTitle =
     locale === "km" ? "អ្វីដែលយើងដោះស្រាយ" : "What we solve";
@@ -84,6 +57,13 @@ export default function HomePage() {
     locale === "km"
       ? "យើងផ្តោតលើការបំពេញចន្លោះដែលគ្រួសារ និងសហគមន៍ជួបប្រទះ រួមមានការគាំទ្រការចិញ្ចឹមកូនដោយវិជ្ជាជីវៈ ការការពារកុមារ ការចូលប្រើចំណេះដឹងដែលងាយយល់ និងការសម្របសម្រួលរវាងដៃគូ ដើម្បីឲ្យកុមារទទួលបានការជួយទាន់ពេល និងរស់នៅក្នុងបរិយាកាសដែលមានសុវត្ថិភាព។"
       : "We focus on gaps families and communities face around positive parenting, child protection, access to practical knowledge, and coordinated local action—so children get timely support and grow in safer, more nurturing environments.";
+
+  const solveHighlights: string[] = [];
+
+  const solvePrimaryImage =
+    "https://t3.ftcdn.net/jpg/03/06/95/14/360_F_306951450_kx2GkuvF2QS7BbClxTuRvEggUnezACyl.jpg";
+  const solveSecondaryImage =
+    "https://media.istockphoto.com/id/2096480418/photo/group-of-multi-cultural-children-friends-linking-arms-looking-down-into-camera.jpg?s=612x612&w=0&k=20&c=H0-_W5BfzoBd8VqKwsj353-25GCwsF5XRHVzitJ4ffQ=";
 
   const visionTitle = locale === "km" ? "ទស្សនវិស័យ" : "Vision";
 
@@ -134,17 +114,86 @@ export default function HomePage() {
         briefDescription={briefDescription}
       />
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-10 sm:px-6 lg:pt-14">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 sm:px-6">
         <section
-          className="space-y-5 rounded-2xl bg-white p-8 shadow-sm sm:p-10 dark:bg-zinc-900"
+          className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-white min-h-[calc(100dvh-64px)] dark:bg-zinc-900"
           lang={locale === "km" ? "km" : "en"}
         >
-          <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
-            {solveTitle}
-          </h2>
-          <p className={`max-w-3xl text-lg text-zinc-700 sm:text-xl dark:text-zinc-300 ${locale === "km" ? "leading-10 sm:leading-[2.2rem]" : ""}`}>
-            {solveDescription}
-          </p>
+          <div className="absolute right-0 top-0 h-36 w-36 rounded-full bg-[#184D6C]/8 blur-3xl" />
+          <div className="absolute left-0 bottom-0 h-28 w-28 rounded-full bg-[#1FC9A5]/10 blur-3xl" />
+          <div className="mx-auto flex min-h-[calc(100dvh-64px)] w-full max-w-7xl items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+            <div className="grid w-full items-center gap-10 md:grid-cols-[1fr_0.96fr] md:gap-12 lg:gap-16">
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#184D6C]/10 px-4 py-2 text-sm font-semibold text-[#184D6C]">
+                    <span className="h-2 w-2 rounded-full bg-[#1FC9A5]" />
+                    {solveTitle}
+                  </span>
+                  <h2 className="max-w-xl text-3xl font-bold tracking-tight text-[#184D6C] sm:text-4xl lg:text-5xl">
+                    {locale === "km"
+                      ? "What we solve for families and communities"
+                      : "What we solve for families and communities"}
+                  </h2>
+                  <p
+                    className={`max-w-2xl text-base leading-8 text-zinc-700 sm:text-lg dark:text-zinc-300 ${
+                      locale === "km" ? "sm:leading-9" : ""
+                    }`}
+                  >
+                    {solveDescription}
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
+                  {solveHighlights.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-[#184D6C]/10 bg-[#184D6C]/5 px-4 py-3 text-sm font-semibold text-[#184D6C] shadow-sm"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href="/what-we-do"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#184D6C] px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#184D6C]/20 transition-transform hover:-translate-y-0.5 hover:bg-[#163f59] active:scale-[0.98]"
+                  >
+                    What We Do <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-[560px] md:max-w-none md:justify-self-end">
+                <div className="absolute -left-5 top-8 h-28 w-28 rounded-[2rem] bg-[#184D6C] opacity-85 sm:-left-7 sm:h-32 sm:w-32" />
+                <div className="absolute right-4 bottom-4 h-24 w-24 rounded-[1.5rem] bg-[#184D6C] opacity-90 sm:right-6 sm:h-28 sm:w-28" />
+
+                <div className="relative z-10 grid gap-4 sm:gap-5">
+                  <div className="group relative ml-auto aspect-[5/4] w-[92%] overflow-hidden rounded-[1.8rem] shadow-[0_18px_45px_rgba(0,0,0,0.18)] ring-8 ring-white dark:ring-zinc-900 sm:w-[88%] md:w-[90%] lg:w-[88%]">
+                    <Image
+                      src={solvePrimaryImage}
+                      alt="Children standing together"
+                      fill
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 767px) 92vw, (max-width: 1023px) 90vw, 520px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#184D6C]/10 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="group relative -mt-10 ml-0 aspect-[16/10] w-[84%] overflow-hidden rounded-[1.6rem] shadow-[0_18px_45px_rgba(0,0,0,0.18)] ring-8 ring-white dark:ring-zinc-900 sm:w-[82%] md:w-[84%] lg:-mt-14">
+                    <Image
+                      src={solveSecondaryImage}
+                      alt="Children gathered in a community setting"
+                      fill
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 767px) 84vw, (max-width: 1023px) 84vw, 460px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#184D6C]/10 via-transparent to-transparent" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section
