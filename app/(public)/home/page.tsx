@@ -94,8 +94,6 @@ export default function HomePage() {
     ? "© ២០២៦ មជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC)។ សិទ្ធិគ្រប់យ៉ាងរក្សាទុក។"
     : "© 2026 Mluop Promviheathor Center Organization (MPC). All rights reserved.";
 
-  const strategyLabel = locale === "km" ? "យុទ្ធសាស្ត្រ" : "Strategy";
-
   const footerLabels = {
     contact: locale === "km" ? "ទំនាក់ទំនង" : "Contact",
     social: locale === "km" ? "បណ្តាញសង្គម" : "Social Media",
@@ -104,6 +102,80 @@ export default function HomePage() {
         ? "អាសយដ្ឋាន៖ ភូមិ/សង្កាត់, រាជធានីភ្នំពេញ, កម្ពុជា"
         : "Address: Phnom Penh, Cambodia",
   };
+
+  const ICON_SVGS = [
+    (
+      <svg
+        key="parenting"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-8 w-8"
+        aria-hidden
+      >
+        <title>Parenting Education</title>
+        <path d="M2 7h20" />
+        <path d="M6 7v11a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7" />
+        <path d="M9 7v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+      </svg>
+    ),
+    (
+      <svg
+        key="shelter"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-8 w-8"
+        aria-hidden
+      >
+        <title>Free Refuge Shelter</title>
+        <path d="M3 11l9-7 9 7v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7z" />
+        <path d="M9 22V12h6v10" />
+      </svg>
+    ),
+    (
+      <svg
+        key="medical"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-8 w-8"
+        aria-hidden
+      >
+        <title>Medical and Blood</title>
+        <path d="M21 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6" />
+        <path d="M7 10V6a5 5 0 0 1 10 0v4" />
+        <path d="M12 14v6" />
+      </svg>
+    ),
+    (
+      <svg
+        key="advocacy"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-8 w-8"
+        aria-hidden
+      >
+        <title>Donate for Health</title>
+        <path d="M21 12.7a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.5 8.5 8.5 0 0 1-7.6-4.5A8.38 8.38 0 0 1 3 12.7" />
+        <path d="M16 6.3a4 4 0 0 1-8 0" />
+        <path d="M12 11v6" />
+      </svg>
+    ),
+  ];
 
   return (
     <div className="bg-[#f3f5f6] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -240,35 +312,41 @@ export default function HomePage() {
             </div>
         </section>
 
-        <section className="space-y-5">
-          <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
-            {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {STRATEGIES.map((strategy, index) => (
-              <Link
-                key={strategy.slug}
-                href={`/strategies/${strategy.slug}`}
-                className="group rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900"
-              >
-                <div className="rounded-xl bg-linear-to-br from-[#e7eff3] to-[#d5e3ea] p-4">
-                  <Image
-                    src={strategy.image}
-                    alt={strategy.name}
-                    className="mx-auto h-28 w-auto object-contain"
-                  />
-                </div>
-                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#184D6C]">
-                  {strategyLabel} {index + 1}
-                </p>
-                <h3 className="mt-1 text-xl font-bold text-zinc-900 group-hover:text-[#184D6C] dark:text-zinc-100">
-                  {strategy.name}
-                </h3>
-                <p className="mt-2 text-base leading-7 text-zinc-600 dark:text-zinc-300">
-                  {strategy.shortDescription}
-                </p>
-              </Link>
-            ))}
+        <section
+          className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-white py-10 dark:bg-zinc-900 sm:py-14"
+          lang={locale === "km" ? "km" : "en"}
+        >
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <div className="space-y-5">
+              <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+                {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
+              </h2>
+
+              <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+            {STRATEGIES.map((strategy, index) => {
+
+              return (
+                <Link
+                  key={strategy.slug}
+                  href={`/strategies/${strategy.slug}`}
+                  className="group flex flex-col items-center rounded-2xl bg-white p-8 sm:p-10 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(16,24,40,0.08)] min-h-[22rem]"
+                >
+                    <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm">
+                      {ICON_SVGS[index % ICON_SVGS.length]}
+                    </div>
+
+                    <h3 className="mt-1 text-2xl font-extrabold text-[#184D6C] leading-snug tracking-tight">
+                      {strategy.name}
+                    </h3>
+
+                    <p className="mt-6 text-base leading-7 text-zinc-600 max-w-xs">
+                      {strategy.shortDescription}
+                    </p>
+                </Link>
+              );
+            })}
+          </div>
+            </div>
           </div>
         </section>
 
