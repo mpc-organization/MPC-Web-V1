@@ -329,18 +329,18 @@ export default function HomePage() {
                 <Link
                   key={strategy.slug}
                   href={`/strategies/${strategy.slug}`}
-                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(16,24,40,0.08)]"
+                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#fff8f3] hover:border-[#fdeee0]"
                 >
-                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm">
+                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#fff2e8]">
                       {ICON_SVGS[index % ICON_SVGS.length]}
                     </div>
 
                     <div>
-                      <h3 className="mt-3 text-xl font-extrabold text-[#184D6C] leading-snug tracking-tight">
+                      <h3 className="mt-3 text-xl font-extrabold text-[#184D6C] leading-snug tracking-tight group-hover:text-[#163f59]">
                         {strategy.name}
                       </h3>
 
-                      <p className="mt-3 text-sm leading-6 text-zinc-600 max-w-[260px] mx-auto">
+                      <p className="mt-3 text-sm leading-6 text-zinc-600 max-w-[260px] mx-auto group-hover:text-zinc-700">
                         {strategy.shortDescription}
                       </p>
                     </div>
