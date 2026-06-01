@@ -74,13 +74,12 @@ export default function HomePage() {
 
     const briefTitle = locale === "km" ? "អំពី MPC" : "About MPC";
 
-  const solveTitle =
-    locale === "km" ? "អ្វីដែលយើងដោះស្រាយ" : "What we solve";
+  const solveTitle = locale === "km" ? "ទស្សនវិស័យ" : "Vision";
 
   const solveDescription =
     locale === "km"
-      ? "យើងផ្តោតលើការបំពេញចន្លោះដែលគ្រួសារ និងសហគមន៍ជួបប្រទះ រួមមានការគាំទ្រការចិញ្ចឹមកូនដោយវិជ្ជាជីវៈ ការការពារកុមារ ការចូលប្រើចំណេះដឹងដែលងាយយល់ និងការសម្របសម្រួលរវាងដៃគូ ដើម្បីឲ្យកុមារទទួលបានការជួយទាន់ពេល និងរស់នៅក្នុងបរិយាកាសដែលមានសុវត្ថិភាព។"
-      : "We focus on gaps families and communities face around positive parenting, child protection, access to practical knowledge, and coordinated local action—so children get timely support and grow in safer, more nurturing environments.";
+      ? "យើងចង់ឃើញសង្គមមួយដែលប្រជាជនគ្រប់រូប ជាពិសេសស្រី្ត កុមារ និងក្រុមងាយរងគ្រោះ មានភាពធន់ រស់នៅប្រកបដោយព្រហ្មវិហារធម៌ រីករាយជាមួយសិទ្ធិ ផ្សារភ្ជាប់នឹងធនធានធម្មជាតិប្រកបដោយចីរភាព។"
+      : "We want to see a society where all people, especially women, children, and vulnerable groups, are resilient, live with Brahmavihāra, enjoy their rights with sustainable natural resources.";
 
   const solveHighlights: string[] = [];
 
@@ -91,8 +90,8 @@ export default function HomePage() {
 
   const visionDescription =
     locale === "km"
-      ? "យើងចង់ឃើញសង្គមមួយដែលប្រជាជនគ្រប់រូប ជាពិសេសស្រី្ត កុមារ និងក្រុមងាយដែលងាយរងគ្រោះ មានភាពធន់ក្នុងការរស់នៅប្រកបដោយ ព្រហ្មវិហារធម៌ ភាពរីករាយជាមួយសិទ្ធិ ផ្សារភ្ជាបទៅ់នឹងធនធានធម្មជាតិ ប្រកបដោយចីរភាព។"
-      : "Our vision is a caring society where children are protected, families are informed, and communities are confident to take action together.";
+      ? "យើងចង់ឃើញសង្គមមួយដែលប្រជាជនគ្រប់រូប ជាពិសេសស្រី្ត កុមារ និងក្រុមងាយរងគ្រោះ មានភាពធន់ រស់នៅប្រកបដោយព្រហ្មវិហារធម៌ រីករាយជាមួយសិទ្ធិ ផ្សារភ្ជាប់នឹងធនធានធម្មជាតិប្រកបដោយចីរភាព។"
+      : "We want to see a society where all people, especially women, children, and vulnerable groups, are resilient, live with Brahmavihāra, enjoy their rights with sustainable natural resources.";
 
   
 
@@ -224,9 +223,7 @@ export default function HomePage() {
                     {solveTitle}
                   </span>
                   <h2 className="max-w-xl text-3xl font-bold tracking-tight text-[#184D6C] sm:text-4xl lg:text-5xl">
-                    {locale === "km"
-                      ? "What we solve for families and communities"
-                      : "What we solve for families and communities"}
+                    {locale === "km" ? "ទស្សនវិស័យ" : "Vision"}
                   </h2>
                   <p
                     className={`max-w-2xl text-base leading-8 text-zinc-700 sm:text-lg dark:text-zinc-300 ${
@@ -253,7 +250,7 @@ export default function HomePage() {
                     href="/what-we-do"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#184D6C] px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#184D6C]/20 transition-transform hover:-translate-y-0.5 hover:bg-[#163f59] active:scale-[0.98]"
                   >
-                    What We Do <span aria-hidden>→</span>
+                    {locale === "km" ? "អានបន្ថែម" : "Read More"} <span aria-hidden>→</span>
                   </Link>
                 </div>
               </div>
