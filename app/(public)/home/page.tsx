@@ -316,32 +316,35 @@ export default function HomePage() {
           className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-white py-10 dark:bg-zinc-900 sm:py-14"
           lang={locale === "km" ? "km" : "en"}
         >
-          <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="mx-auto w-full max-w-8xl px-6">
             <div className="space-y-5">
               <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
                 {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
               </h2>
 
-              <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+              <div className="flex flex-wrap items-stretch justify-center gap-0">
             {STRATEGIES.map((strategy, index) => {
 
               return (
                 <Link
                   key={strategy.slug}
                   href={`/strategies/${strategy.slug}`}
-                  className="group flex flex-col items-center rounded-2xl bg-white p-8 sm:p-10 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(16,24,40,0.08)] min-h-[22rem]"
+                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(16,24,40,0.08)]"
                 >
-                    <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm">
+                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm">
                       {ICON_SVGS[index % ICON_SVGS.length]}
                     </div>
 
-                    <h3 className="mt-1 text-2xl font-extrabold text-[#184D6C] leading-snug tracking-tight">
-                      {strategy.name}
-                    </h3>
+                    <div>
+                      <h3 className="mt-3 text-xl font-extrabold text-[#184D6C] leading-snug tracking-tight">
+                        {strategy.name}
+                      </h3>
 
-                    <p className="mt-6 text-base leading-7 text-zinc-600 max-w-xs">
-                      {strategy.shortDescription}
-                    </p>
+                      <p className="mt-3 text-sm leading-6 text-zinc-600 max-w-[260px] mx-auto">
+                        {strategy.shortDescription}
+                      </p>
+                    </div>
+                    
                 </Link>
               );
             })}
