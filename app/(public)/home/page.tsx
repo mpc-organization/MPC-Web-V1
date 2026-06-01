@@ -11,6 +11,7 @@ import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
 import { MpcOrganizationBanner } from "@/app/features/mpcOrganizationBanner";
 
 const LOCALE_STORAGE_KEY = "mpc-ui-locale";
+const LOCALE_EVENT = "mpc-locale-change";
 
 type Locale = "en" | "km";
 
@@ -43,10 +44,33 @@ export default function HomePage() {
     setLocale(document.documentElement.lang === "km" ? "km" : "en");
   }, []);
 
+  useEffect(() => {
+    const onLocaleChange = (event: Event) => {
+      const localeEvent = event as CustomEvent<"en" | "km">;
+      if (localeEvent.detail === "en" || localeEvent.detail === "km") {
+        setLocale(localeEvent.detail);
+      }
+    };
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== LOCALE_STORAGE_KEY) return;
+      if (event.newValue === "en" || event.newValue === "km") {
+        setLocale(event.newValue);
+      }
+    };
+
+    window.addEventListener(LOCALE_EVENT, onLocaleChange as EventListener);
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener(LOCALE_EVENT, onLocaleChange as EventListener);
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
+
   const briefDescription =
     locale === "km"
-      ? "យើងជាអង្គការក្នុងស្រុក មិនរកប្រាក់ចំណូល ដែលមានទីតាំង ស្ថិតនៅស្រុកស្រែអំបិល ខេត្តកោះកុងបានចុះបញ្ជីជាមួយក្រសួងមហាផ្ទៃ តាំងពីឆ្នាំ២០០៥ រហូតដល់បច្ចុប្បន្ន"
-      : "Mluop Promviheathor Center Organization (MPC) supports families and communities through child protection, parenting support, and practical education to create safer, healthier futures for every child.";
+      ? "អង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC) បានចុះបញ្ជីជាមួយក្រសួងមហាផ្ទៃ កាលពីថ្ងៃទី២៩ កក្កដា ឆ្នាំ២០២៥ យើងជាអង្គការក្នុងស្រុក មិនរកប្រាក់ចំណូលដែលមានទីតាំង ស្ថិតនៅស្រុកស្រែអំបិល ខេត្តកោះកុង យើងធ្វើការជាដៃគូជាមួយសហគមន៍ និងក្រុមងាយរងគ្រោះដើម្បីកសាងសង្គមដែលមានភាពធន់ និងរួចផុតពីភាពក្រីក្រ។"
+      : "Mlup Promviheathor Center (MPC) obtained registration permit at the Ministry of Interior on July 29, 2005, We are a non-profit and local NGO based in Sre Ambel district, Koh Kong Province. We work as partnership with communities and vulnerable groups to build a resilient society and free from poverty.";
 
     const briefTitle = locale === "km" ? "អំពី MPC" : "About MPC";
 

@@ -111,7 +111,7 @@ export default function Header() {
         <div className="ml-auto hidden flex-wrap items-center justify-end gap-2 sm:gap-3 md:flex">
           <nav
             aria-label="Main navigation"
-            className="flex flex-wrap items-center justify-end gap-1 sm:gap-2"
+            className="flex items-center justify-end gap-4"
             lang={locale === "km" ? "km" : "en"}
           >
             {NAV.map((item) => {
@@ -122,13 +122,13 @@ export default function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={[
-                    "rounded-full px-2.5 py-1.5 text-xs transition-colors sm:px-3 sm:py-2 sm:text-sm",
-                    active
-                      ? "bg-[#184D6C] font-bold text-white dark:bg-[#2d6d8f]"
-                      : "font-medium text-zinc-700 hover:bg-zinc-100 hover:text-[#184D6C] dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-[#7eb8d4]",
+                    "group relative px-3 py-2 text-sm sm:text-base md:text-lg transition-colors",
+                    active ? "text-[#184D6C] font-semibold" : "font-medium text-zinc-700 hover:text-[#184D6C] dark:text-zinc-300",
                   ].join(" ")}
                 >
-                  {label(item.en, item.km)}
+                  <span className={active ? "inline-block border-b-2 border-[#184D6C] pb-0.5" : "inline-block border-b-2 border-transparent group-hover:border-[#184D6C] pb-0.5"}>
+                    {label(item.en, item.km)}
+                  </span>
                 </Link>
               );
             })}

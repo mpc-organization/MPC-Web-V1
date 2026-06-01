@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import orgBriefBanner from "@/public/assets/image/orgBrief_Banner.png";
+import orgBriefBanner from "@/public/assets/image/image.png";
 
 type Locale = "en" | "km";
 
@@ -21,6 +21,19 @@ export function MpcOrganizationBanner({
   briefDescription,
 }: MpcOrganizationBannerProps) {
   const [locale, setLocale] = useState<Locale>("en");
+
+  const BANNER_TEXTS = {
+    km: {
+      title: 'អំពី MPC',
+      description:
+        'អង្គការមជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC) បានចុះបញ្ជីជាមួយក្រសួងមហាផ្ទៃ កាលពីថ្ងៃទី២៩ កក្កដា ឆ្នាំ២០២៥ យើងជាអង្គការក្នុងស្រុក មិនរកប្រាក់ចំណូលដែលមានទីតាំង ស្ថិតនៅស្រុកស្រែអំបិល ខេត្តកោះកុង យើងធ្វើការជាដៃគូជាមួយសហគមន៍ និងក្រុមងាយរងគ្រោះដើម្បីកសាងសង្គមដែលមានភាពធន់ និងរួចផុតពីភាពក្រីក្រ។',
+    },
+    en: {
+      title: 'About MPC',
+      description:
+        'Mlup Promviheathor Center (MPC) obtained registration permit at the Ministry of Interior on July 29, 2005, We are a non-profit and local NGO based in Sre Ambel district, Koh Kong Province. We work as partnership with communities and vulnerable groups to build a resilient society and free from poverty.',
+    },
+  } as const;
 
   useEffect(() => {
     const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
@@ -83,7 +96,7 @@ export function MpcOrganizationBanner({
                 : "text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl md:leading-[1.1]"
             }`}
           >
-            {briefTitle}
+            {locale === 'km' ? BANNER_TEXTS.km.title : BANNER_TEXTS.en.title}
           </h1>
 
           {/* Description */}
@@ -94,22 +107,22 @@ export function MpcOrganizationBanner({
                 : "text-base leading-7 sm:text-lg md:text-xl md:leading-8"
             }`}
           >
-            {briefDescription}
+            {locale === 'km' ? BANNER_TEXTS.km.description : BANNER_TEXTS.en.description}
           </p>
 
           {/* Action Buttons */}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-8 md:gap-4">
             <Link
-              href="/donation"
+              href="/about"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#ffffff] px-6 py-3 font-semibold text-[#184D6C] transition-all hover:bg-[#ffffff]/80 active:scale-95 md:px-8 md:py-3"
             >
-              About Us <span aria-hidden>→</span>
+              {locale === 'km' ? 'អំពីយើង' : 'About Us'} <span aria-hidden>→</span>
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white px-6 py-3 font-semibold text-white transition-all hover:bg-white/10 active:scale-95 md:px-8 md:py-3"
             >
-              Contact Now <span aria-hidden>→</span>
+              {locale === 'km' ? 'ទំនាក់ទំនង' : 'Contact Now'} <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
