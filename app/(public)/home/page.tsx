@@ -338,21 +338,21 @@ export default function HomePage() {
           lang={locale === "km" ? "km" : "en"}
         >
           <div className="mx-auto w-full max-w-8xl px-6">
-            <div className="space-y-5">
+            <div className="mx-auto w-full max-w-[1320px] space-y-5">
               <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
                 {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
               </h2>
 
-              <div className="flex flex-wrap items-stretch justify-center gap-0">
+              <div className="flex flex-wrap items-stretch justify-start gap-0">
             {STRATEGIES.map((strategy, index) => {
 
               return (
                 <Link
                   key={strategy.slug}
                   href={`/strategies/${strategy.slug}`}
-                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#fff8f3] hover:border-[#fdeee0]"
+                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#184D6C]/5 hover:border-[#184D6C]/15"
                 >
-                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#fdeee0] text-[#c96f37] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#fff2e8]">
+                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#184D6C]/10 text-[#184D6C] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#184D6C]/10">
                       {ICON_SVGS[index % ICON_SVGS.length]}
                     </div>
 
