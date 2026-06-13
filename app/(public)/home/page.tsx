@@ -373,50 +373,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        <section
-          className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 bg-white py-10 dark:bg-zinc-900 sm:py-14"
-          lang={locale === "km" ? "km" : "en"}
-        >
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:py-0">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
-                {targetLocationsTitle}
-              </h2>
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold text-zinc-700 dark:text-zinc-300">
-                  {targetLocationsSubtitle}
-                </h3>
-                <ul className={`list-inside list-disc space-y-3 text-lg text-zinc-600 dark:text-zinc-400 ${locale === "km" ? "leading-10" : ""}`}>
-                  {locationBullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {TARGET_LOCATIONS.map((location) => (
-                <div
-                  key={location.id}
-                  className="rounded-xl border-2 border-zinc-200 p-6 dark:border-zinc-700"
-                >
-                  <div className="mb-4 inline-block rounded-full bg-[#184D6C] px-4 py-1 text-sm font-semibold text-white">
-                    {location.status[locale]}
-                  </div>
-                  <h3 className="mt-3 text-xl font-bold text-[#184D6C] sm:text-2xl">
-                    {location.title[locale]}
-                  </h3>
-                  <ul className={`mt-4 list-inside list-disc space-y-3 text-base text-zinc-600 dark:text-zinc-400 ${locale === "km" ? "leading-9" : ""}`}>
-                    {location.description[locale].map((desc) => (
-                      <li key={desc}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <footer className="border-t border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
         <div className="mx-auto w-full px-4 py-12 sm:px-6 lg:px-8">
