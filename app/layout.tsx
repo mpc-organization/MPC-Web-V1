@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import favicon from "./favicon.jpg";
+import favicon from "./favicon.png";
 
 import "./globals.css";
 
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
-const rootClassName = `${geistSans.variable} ${geistMono.variable} h-full antialiased`;
-const bodyClassName = "flex min-h-full flex-col";
+const rootClassName = `${geistSans.variable} ${geistMono.variable} h-full overflow-x-hidden antialiased`;
+const bodyClassName = "flex min-h-full flex-col overflow-x-hidden";
 
 export default function RootLayout({
   children,
@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang="en" className={rootClassName}>
       <body className={bodyClassName}>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
       </body>
     </html>
   );
