@@ -88,12 +88,15 @@ export default function HomePage() {
   const solveSecondaryImage =
     "https://media.istockphoto.com/id/2096480418/photo/group-of-multi-cultural-children-friends-linking-arms-looking-down-into-camera.jpg?s=612x612&w=0&k=20&c=H0-_W5BfzoBd8VqKwsj353-25GCwsF5XRHVzitJ4ffQ=";
 
-  const visionDescription =
-    locale === "km"
-      ? "យើងចង់ឃើញសង្គមមួយដែលប្រជាជនគ្រប់រូប ជាពិសេសស្រី្ត កុមារ និងក្រុមងាយរងគ្រោះ មានភាពធន់ រស់នៅប្រកបដោយព្រហ្មវិហារធម៌ រីករាយជាមួយសិទ្ធិ ផ្សារភ្ជាប់នឹងធនធានធម្មជាតិប្រកបដោយចីរភាព។"
-      : "We want to see a society where all people, especially women, children, and vulnerable groups, are resilient, live with Brahmavihāra, enjoy their rights with sustainable natural resources.";
+  const missionTitle = locale === "km" ? "បេសកម្ម" : "MISSION";
 
-  
+  const missionDescription =
+    locale === "km"
+      ? "យើងធ្វើការជាដៃគូជាមួយសហគមន៍ និងក្រុមងាយរងគ្រោះដើម្បីកសាងសង្គមដែលមានភាពធន់ និងរួចផុតពីភាពក្រីក្រ។"
+      : "We work as a partnership with communities and vulnerable groups to build a resilient society and free from poverty.";
+
+  const aboutUsLabel = locale === "km" ? "អំពីយើង" : "About Us";
+
 
   const targetLocationsTitle = locale === "km" ? "ទីតាំងគោលដៅ" : "Target Locations";
 
@@ -136,7 +139,7 @@ export default function HomePage() {
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-8 w-8"
+        className="h-9 w-9"
         aria-hidden
       >
         <title>Parenting Education</title>
@@ -154,7 +157,7 @@ export default function HomePage() {
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-8 w-8"
+        className="h-9 w-9"
         aria-hidden
       >
         <title>Free Refuge Shelter</title>
@@ -171,7 +174,7 @@ export default function HomePage() {
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-8 w-8"
+        className="h-9 w-9"
         aria-hidden
       >
         <title>Medical and Blood</title>
@@ -189,7 +192,7 @@ export default function HomePage() {
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-8 w-8"
+        className="h-9 w-9"
         aria-hidden
       >
         <title>Donate for Health</title>
@@ -316,16 +319,20 @@ export default function HomePage() {
                 <div className="relative w-full bg-[#184D6C] px-8 py-12 sm:px-14 sm:py-20">
                   <div className="z-10 max-w-lg">
                     <h2 className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl">
-                      VISION
+                      {missionTitle}
                     </h2>
-                    <p className="mb-8 text-base text-white/90">
-                      {visionDescription}
+                    <p
+                      className={`mb-8 text-base text-white/90 ${
+                        locale === "km" ? "leading-8" : ""
+                      }`}
+                    >
+                      {missionDescription}
                     </p>
                     <Link
                       href="/about"
                       className="inline-flex items-center justify-center gap-2 bg-white px-6 py-3 text-base font-semibold text-[#184D6C] shadow-md"
                     >
-                      About Us
+                      {aboutUsLabel}
                     </Link>
                   </div>
                 </div>
@@ -338,30 +345,30 @@ export default function HomePage() {
           lang={locale === "km" ? "km" : "en"}
         >
           <div className="mx-auto w-full max-w-8xl px-6">
-            <div className="mx-auto w-full max-w-[1320px] space-y-5">
+            <div className="mx-auto w-full max-w-7xl space-y-5">
               <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
                 {locale === "km" ? "អ្វីដែលយើងធ្វើ" : "What we do"}
               </h2>
 
-              <div className="flex flex-wrap items-stretch justify-start gap-0">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {STRATEGIES.map((strategy, index) => {
 
               return (
                 <Link
                   key={strategy.slug}
                   href={`/strategies/${strategy.slug}`}
-                  className="group flex flex-col items-center justify-between w-[330px] h-[277px] rounded-2xl bg-white p-6 sm:p-6 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#184D6C]/5 hover:border-[#184D6C]/15"
+                  className="group flex min-h-[340px] flex-col items-center justify-between rounded-2xl bg-white p-8 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#184D6C]/5 hover:border-[#184D6C]/15"
                 >
-                    <div className="mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-1 ring-[#184D6C]/10 text-[#184D6C] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#184D6C]/10">
+                    <div className="mt-2 flex h-20 w-20 items-center justify-center rounded-full bg-white ring-1 ring-[#184D6C]/10 text-[#184D6C] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#184D6C]/10">
                       {ICON_SVGS[index % ICON_SVGS.length]}
                     </div>
 
                     <div>
-                      <h3 className="mt-3 text-xl font-extrabold text-[#184D6C] leading-snug tracking-tight group-hover:text-[#163f59]">
+                      <h3 className="mt-4 text-2xl font-extrabold text-[#184D6C] leading-snug tracking-tight group-hover:text-[#163f59]">
                         {strategy.name}
                       </h3>
 
-                      <p className="mt-3 text-sm leading-6 text-zinc-600 max-w-[260px] mx-auto group-hover:text-zinc-700">
+                      <p className="mt-4 text-base leading-7 text-zinc-600 max-w-[320px] mx-auto group-hover:text-zinc-700">
                         {strategy.shortDescription}
                       </p>
                     </div>

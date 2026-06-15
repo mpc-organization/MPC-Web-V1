@@ -26,15 +26,6 @@ export const STRATEGIES = [
       "We equip community actors with skills, tools, and collaborative practices to sustain positive change at local level.",
     image: logo,
   },
-  {
-    slug: "strategy4",
-    name: "Advocacy & Public Awareness",
-    shortDescription:
-      "Promote informed public action for stronger family and child outcomes.",
-    description:
-      "We raise awareness and advocate for policies and practices that prioritize child rights, healthy parenting, and social support systems.",
-    image: logo,
-  },
 ] as const;
 
 export type StrategySlug = (typeof STRATEGIES)[number]["slug"];
