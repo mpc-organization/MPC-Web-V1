@@ -4,8 +4,8 @@ export const STRATEGIES = [
   {
     slug: "strategy1",
     name: {
-      en: "Parenting Education",
-      km: "ការអប់រំការចិញ្ចឹមកូន",
+      en: "National Resources and Agriculture sectors linked to climate change",
+      km: "វិស័យធនធានធម្មជាតិ និងកសិកម្ម ផ្សារភ្ជាប់ការប្រែប្រួលអាកាសធាតុ",
     },
     shortDescription: {
       en: "Support parents with practical positive parenting tools.",
@@ -20,8 +20,8 @@ export const STRATEGIES = [
   {
     slug: "strategy2",
     name: {
-      en: "Child Protection & Referral",
-      km: "ការពារកុមារ និងការបញ្ជូន",
+      en: "Public services are linked to gender inclusion",
+      km: "វិស័យសាធារណៈ ផ្សារភ្ជាប់នឹងយេនឌ័រប្រកបដោយបរិយាបន្ន",
     },
     shortDescription: {
       en: "Connect vulnerable children to trusted support pathways.",
@@ -36,8 +36,8 @@ export const STRATEGIES = [
   {
     slug: "strategy3",
     name: {
-      en: "Community Capacity Building",
-      km: "ការពង្រឹងសមត្ថភាពសហគមន៍",
+      en: "Education Sector link with Digital",
+      km: "វិស័យអប់រំផ្សារភ្ជាប់នឹងឌីជីថល",
     },
     shortDescription: {
       en: "Strengthen local leadership and coordination for child well-being.",

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import logo from "@/public/assets/MPC_Logo.png";
 import visionBanner from "@/public/assets/image/visionBanner.png";
 import { STRATEGIES } from "@/shared/data/strategies";
+import { CORE_VALUES } from "@/shared/data/coreValues";
 import { TARGET_LOCATIONS } from "@/shared/data/targetLocations";
 import { MpcOrganizationBanner } from "@/app/features/mpcOrganizationBanner";
 
@@ -357,7 +358,7 @@ export default function HomePage() {
                 <Link
                   key={strategy.slug}
                   href={`/strategies/${strategy.slug}`}
-                  className="group flex min-h-[340px] flex-col items-center justify-between rounded-2xl bg-white p-8 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#184D6C]/5 hover:border-[#184D6C]/15"
+                  className="group flex min-h-[250px] flex-col items-center justify-between rounded-2xl bg-white p-8 text-center border border-zinc-100 shadow-[0_12px_30px_rgba(16,24,40,0.06)] transition-colors duration-300 ease-in-out hover:bg-[#184D6C]/5 hover:border-[#184D6C]/15"
                 >
                     <div className="mt-2 flex h-20 w-20 items-center justify-center rounded-full bg-white ring-1 ring-[#184D6C]/10 text-[#184D6C] shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-[#184D6C]/10">
                       {ICON_SVGS[index % ICON_SVGS.length]}
@@ -381,6 +382,50 @@ export default function HomePage() {
               );
             })}
           </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-[#f3f5f6] py-10 dark:bg-zinc-950 sm:py-14"
+          lang={locale === "km" ? "km" : "en"}
+        >
+          <div className="mx-auto w-full max-w-8xl px-6">
+            <div className="mx-auto w-full max-w-7xl space-y-8">
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold text-[#184D6C] sm:text-4xl">
+                  {locale === "km" ? "គុណតម្លៃ" : "Core Values"}
+                </h2>
+                <p
+                  className={`max-w-3xl text-base text-zinc-600 dark:text-zinc-400 sm:text-lg ${
+                    locale === "km" ? "leading-8" : "leading-7"
+                  }`}
+                >
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                {CORE_VALUES.map((value, index) => (
+                  <div
+                    key={value.id}
+                    className="flex flex-col rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-[0_8px_24px_rgba(16,24,40,0.05)] dark:border-zinc-800 dark:bg-zinc-900"
+                  >
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#184D6C]/10 text-sm font-bold text-[#184D6C]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-4 text-lg font-bold leading-snug text-[#184D6C] sm:text-xl">
+                      {value.name[locale]}
+                    </h3>
+                    <p
+                      className={`mt-3 text-sm text-zinc-600 dark:text-zinc-400 ${
+                        locale === "km" ? "leading-7" : "leading-6"
+                      }`}
+                    >
+                      {value.description[locale]}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
