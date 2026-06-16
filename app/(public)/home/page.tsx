@@ -365,11 +365,15 @@ export default function HomePage() {
 
                     <div>
                       <h3 className="mt-4 text-2xl font-extrabold text-[#184D6C] leading-snug tracking-tight group-hover:text-[#163f59]">
-                        {strategy.name}
+                        {strategy.name[locale]}
                       </h3>
 
-                      <p className="mt-4 text-base leading-7 text-zinc-600 max-w-[320px] mx-auto group-hover:text-zinc-700">
-                        {strategy.shortDescription}
+                      <p
+                        className={`mt-4 text-base text-zinc-600 max-w-[320px] mx-auto group-hover:text-zinc-700 ${
+                          locale === "km" ? "leading-8" : "leading-7"
+                        }`}
+                      >
+                        {strategy.shortDescription[locale]}
                       </p>
                     </div>
                     

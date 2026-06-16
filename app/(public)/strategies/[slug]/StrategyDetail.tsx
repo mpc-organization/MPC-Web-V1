@@ -77,14 +77,14 @@ export function StrategyDetail({ strategy }: StrategyDetailProps) {
               {labels.section}
             </p>
             <h1 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
-              {strategy.name}
+              {strategy.name[locale]}
             </h1>
             <p
               className={`mt-4 max-w-2xl text-base text-white/90 sm:text-lg ${
                 locale === "km" ? "leading-8" : "leading-7"
               }`}
             >
-              {strategy.shortDescription}
+              {strategy.shortDescription[locale]}
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export function StrategyDetail({ strategy }: StrategyDetailProps) {
                 locale === "km" ? "leading-8" : "leading-8"
               }`}
             >
-              {strategy.description}
+              {strategy.description[locale]}
             </p>
           </div>
         </article>
@@ -114,10 +114,14 @@ export function StrategyDetail({ strategy }: StrategyDetailProps) {
                   >
                     <div>
                       <p className="font-semibold text-[#184D6C] group-hover:text-[#163f59]">
-                        {item.name}
+                        {item.name[locale]}
                       </p>
-                      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                        {item.shortDescription}
+                      <p
+                        className={`mt-1 text-sm text-zinc-600 dark:text-zinc-400 ${
+                          locale === "km" ? "leading-7" : ""
+                        }`}
+                      >
+                        {item.shortDescription[locale]}
                       </p>
                     </div>
                     <span
