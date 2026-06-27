@@ -2020,7 +2020,7 @@ hr {
 }
 
 .cs_accent_color {
-  color: var(--accent-color);
+  color: var(--white-color);
 }
 
 .cs_white_bg {
@@ -4648,7 +4648,7 @@ label {
   opacity: 0;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  background-color: var(--heading-color);
+  background-color: var(--dark-blue-color);
 }
 .cs_gescout_sticky.cs_white_bg {
   background-color: #fff;
@@ -4666,6 +4666,7 @@ label {
 .cs_gescout_show {
   top: 0 !important;
   opacity: 1;
+  background-color: var(--dark-blue-color);
   -webkit-box-shadow: 0px 1px 2px 0px rgba(2, 0, 181, 0.1);
           box-shadow: 0px 1px 2px 0px rgba(2, 0, 181, 0.1);
 }
@@ -4677,9 +4678,9 @@ label {
 }
 .cs_site_branding img,
 .cs_logo_img {
-  width: 48px !important;
-  height: 48px !important;
-  max-width: 48px !important;
+  width: 65px !important;
+  height: 65px !important;
+  max-width: 65px !important;
   object-fit: contain;
 }
 .cs_footer_text_widget img,
@@ -6224,6 +6225,15 @@ label {
   width: 100%;
   left: 0;
   top: 0;
+}
+.cs_hero.cs_style_3 .cs_hero_overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(24, 77, 108, 0.5);
+  z-index: 1;
 }
 .cs_hero.cs_style_3 .container {
   position: relative;
