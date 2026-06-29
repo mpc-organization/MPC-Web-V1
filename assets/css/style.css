@@ -867,6 +867,9 @@ textarea {
   .cs_height_90 {
     height: 90px;
   }
+  .cs_height_90c{
+    height: 30px;
+  }
   .cs_height_91 {
     height: 91px;
   }
@@ -1708,6 +1711,27 @@ textarea {
     padding-left: 13px;
     padding-right: 13px;
   }
+}
+
+.set-thegap {
+  margin-bottom: 80px;
+}
+
+.cs_mpc_work_row .cs_card.cs_style_2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.cs_mpc_work_row .cs_card.cs_style_2 .cs_card_info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.cs_mpc_work_row .cs_card.cs_style_2 .cs_card_info .cs_btn {
+  margin-top: auto;
+}
+.cs_mpc_work_row .cs_progress_wrap:empty {
+  display: none;
 }
 
 .cs_fs_14 {
