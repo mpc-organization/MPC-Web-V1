@@ -8678,3 +8678,7 @@ html .ui-button.ui-state-disabled:active {
   -webkit-box-shadow: none;
           box-shadow: none;
 }/*# sourceMappingURL=style.css.map */
+
+body.mpc-lang-km {
+  font-family: "Noto Sans Khmer", "Roboto", sans-serif;
+}

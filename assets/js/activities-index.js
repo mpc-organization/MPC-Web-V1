@@ -59,6 +59,11 @@
       visibleCount += LOAD_MORE_COUNT;
       renderList();
     });
+
+    document.addEventListener('mpc:langchange', function () {
+      renderList();
+      window.MPCI18n.apply();
+    });
   }
 
   $(init);
