@@ -286,7 +286,10 @@
       );
     }
 
-    $(document).on('click', '.cs_nav_list a[href*="#"]', function (e) {
+    $(document).on(
+      'click',
+      '.cs_nav_list a[href*="#"], .cs_footer_widget_menu a[href*="#"], .cs_hero_btns a[href*="#"]',
+      function (e) {
       var href = $(this).attr('href');
       var hashIndex = href.indexOf('#');
       if (hashIndex === -1) {
