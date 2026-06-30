@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/img/MPC_Logo/favicon.png" type="image/png">
+  <title>MPC - Activities Admin</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <style>
+    .cs_admin_wrap { padding: 120px 0 80px; }
+    .cs_admin_card { background: #fff; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+    .cs_admin_header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+    .cs_admin_list { list-style: none; }
+    .cs_admin_list_item { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 16px 0; border-bottom: 1px solid #eee; }
+    .cs_admin_list_actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cs_admin_success { color: #184d6c; margin-bottom: 20px; }
+    .cs_admin_error { color: #b42318; margin-bottom: 20px; }
+    #activity-sidebar-list li.active a { background-color: var(--heading-color); color: #fff; }
+  </style>
+</head>
+
+<body>
+  <header class="cs_site_header cs_style_1 cs_sticky_header">
+    <div class="cs_main_header">
+      <div class="container">
+        <div class="cs_main_header_in">
+          <div class="cs_main_header_left">
+            <a class="cs_site_branding" href="index.html">
+              <img class="cs_logo_img" src="assets/img/MPC_Logo/LogoNoBackground.png" alt="MPC Logo" width="48" height="48">
+            </a>
+          </div>
+          <div class="cs_main_header_center">
+            <div class="cs_nav">
+              <ul class="cs_nav_list">
+                <li><a href="index.html">Back to Website</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="cs_admin_wrap">
+    <div class="container">
+      <div id="admin-message" style="display:none;"></div>
+
+      <div id="login-panel" class="cs_admin_card" style="max-width: 480px; margin: 0 auto;">
+        <h1 class="cs_fs_38 cs_mb_20">Admin Login</h1>
+        <p class="cs_mb_30">Sign in to publish and manage Our Activities content.</p>
+        <form id="login-form">
+          <input type="email" id="login-email" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Admin email" required>
+          <input type="password" id="login-password" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Password" required>
+          <button type="submit" class="cs_btn cs_style_1 w-100" id="login-btn">Sign In</button>
+        </form>
+      </div>
+
+      <div id="admin-app" style="display:none;">
+        <div class="cs_admin_header">
+          <div>
+            <h1 class="cs_fs_38 cs_mb_10" id="form-title">Add New Activity</h1>
+            <p class="mb-0">Signed in as <span id="admin-user-email"></span></p>
+          </div>
+          <button type="button" class="cs_btn cs_style_1 cs_color_1" id="logout-btn">Logout</button>
+        </div>
+
+        <div class="row cs_gap_y_40">
+          <div class="col-lg-7">
+            <div class="cs_admin_card">
+              <form id="activity-form">
+                <input type="text" id="activity-title" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Activity title" required>
+                <input type="text" id="activity-date" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Date (e.g. 11 Dec 2024)" required>
+                <input type="text" id="activity-author" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Author name">
+                <input type="text" id="activity-author-role" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Author role (e.g. Environment Activist)">
+                <input type="url" id="activity-image-url" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Image URL (e.g. assets/img/MPC_images/photo.jpg or https://...)">
+
+                <h3 class="cs_fs_28 cs_mb_20">Detail sections</h3>
+                <div id="sections-container"></div>
+                <button type="button" class="cs_btn cs_style_1 cs_color_1 cs_mb_30" id="add-section-btn">Add Section</button>
+
+                <div class="d-flex gap-3 flex-wrap">
+                  <button type="submit" class="cs_btn cs_style_1" id="save-activity-btn">Publish Activity</button>
+                  <button type="button" class="cs_btn cs_style_1 cs_color_1" id="cancel-edit-btn" style="display:none;">Cancel Edit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="cs_admin_card">
+              <h2 class="cs_fs_28 cs_mb_20">Published Activities</h2>
+              <div id="admin-activities-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-init.js?v=2"></script>
+  <script src="assets/js/activities-service.js"></script>
+  <script src="assets/js/admin-activities.js"></script>
+</body>
+
+</html>

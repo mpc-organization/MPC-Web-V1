@@ -1744,6 +1744,11 @@ textarea {
   display: none;
 }
 
+#activity-sidebar-list li.active a {
+  background-color: var(--heading-color);
+  color: #fff;
+}
+
 .cs_fs_14 {
   font-size: 14px;
   line-height: 1.6em;
