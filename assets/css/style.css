@@ -85,6 +85,16 @@
 /*--------------------------------------------------------------
 1. Typography
 ----------------------------------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+
+#vision,
+#current-mpc-work,
+#contact {
+  scroll-margin-top: 100px;
+}
+
 body,
 html {
   color: var(--body-color);
@@ -866,6 +876,9 @@ textarea {
   }
   .cs_height_90 {
     height: 90px;
+  }
+  .cs_height_90c{
+    height: 30px;
   }
   .cs_height_91 {
     height: 91px;
@@ -1710,6 +1723,37 @@ textarea {
   }
 }
 
+.set-thegap {
+  margin-bottom: 80px;
+}
+
+.cs_mpc_work_row .cs_card.cs_style_2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.cs_mpc_work_row .cs_card.cs_style_2 .cs_card_info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.cs_mpc_work_row .cs_card.cs_style_2 .cs_card_info .cs_btn {
+  margin-top: auto;
+}
+.cs_mpc_work_row .cs_progress_wrap:empty {
+  display: none;
+}
+
+#activity-sidebar-list li.active a {
+  background-color: var(--heading-color);
+  color: #fff;
+}
+
+.cs_fs_14 {
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
 .cs_fs_18 {
   font-size: 18px;
   line-height: 1.66em;
@@ -2020,7 +2064,7 @@ hr {
 }
 
 .cs_accent_color {
-  color: var(--accent-color);
+  color: var(--white-color);
 }
 
 .cs_white_bg {
@@ -2045,6 +2089,10 @@ hr {
 
 .cs_accent_bg {
   background-color: var(--accent-color);
+}
+
+.cs_dark_blue_bg {
+  background-color: var(--dark-blue-color);
 }
 
 label {
@@ -4648,7 +4696,7 @@ label {
   opacity: 0;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  background-color: var(--heading-color);
+  background-color: var(--dark-blue-color);
 }
 .cs_gescout_sticky.cs_white_bg {
   background-color: #fff;
@@ -4666,6 +4714,7 @@ label {
 .cs_gescout_show {
   top: 0 !important;
   opacity: 1;
+  background-color: var(--dark-blue-color);
   -webkit-box-shadow: 0px 1px 2px 0px rgba(2, 0, 181, 0.1);
           box-shadow: 0px 1px 2px 0px rgba(2, 0, 181, 0.1);
 }
@@ -4677,9 +4726,9 @@ label {
 }
 .cs_site_branding img,
 .cs_logo_img {
-  width: 48px !important;
-  height: 48px !important;
-  max-width: 48px !important;
+  width: 65px !important;
+  height: 65px !important;
+  max-width: 65px !important;
   object-fit: contain;
 }
 .cs_footer_text_widget img,
@@ -5309,6 +5358,12 @@ label {
 }
 .cs_footer.cs_style_1.cs_type_1 {
   margin-top: 0;
+}
+.cs_footer.cs_style_1.cs_dark_blue_bg {
+  background-color: var(--dark-blue-color);
+}
+.cs_footer.cs_style_1.cs_dark_blue_bg .cs_footer_bottom {
+  border-top-color: rgba(255, 255, 255, 0.15);
 }
 .cs_footer.cs_style_1 .cs_newsletter.cs_style_2 {
   margin-top: -134px;
@@ -6224,6 +6279,15 @@ label {
   width: 100%;
   left: 0;
   top: 0;
+}
+.cs_hero.cs_style_3 .cs_hero_overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(24, 77, 108, 0.5);
+  z-index: 1;
 }
 .cs_hero.cs_style_3 .container {
   position: relative;

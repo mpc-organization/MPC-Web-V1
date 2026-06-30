@@ -21,6 +21,10 @@
     padding-right: 13px;
   }
 }
+.cs_fs_14 {
+  font-size: 14px;
+  line-height: 1.6em;
+}
 .cs_fs_18 {
   font-size: 18px;
   line-height: 1.66em;
@@ -293,6 +297,10 @@ hr {
 
 .cs_accent_bg {
   background-color: var(--accent-color);
+}
+
+.cs_dark_blue_bg {
+  background-color: var(--dark-blue-color);
 }
 
 label {

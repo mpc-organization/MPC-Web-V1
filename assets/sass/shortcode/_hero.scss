@@ -266,6 +266,15 @@
     left: 0;
     top: 0;
   }
+  .cs_hero_overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(24, 77, 108, 0.8);
+    z-index: 1;
+  }
   .container {
     position: relative;
     z-index: 5;

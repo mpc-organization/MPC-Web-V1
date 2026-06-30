@@ -51,6 +51,7 @@
     slickInit();
     modalVideo();
     scrollUp();
+    mpcSectionScroll();
     donationCard();
     rippleInit();
     accordian();
@@ -116,7 +117,6 @@
   --------------------------------------------------------------*/
   function stickyHeader() {
     var $window = $(window);
-    var lastScrollTop = 0;
     var $header = $('.cs_sticky_header');
     var headerHeight = $header.outerHeight() + 20;
 
@@ -124,20 +124,10 @@
       var windowTop = $window.scrollTop();
 
       if (windowTop >= headerHeight) {
-        $header.addClass('cs_gescout_sticky');
+        $header.addClass('cs_gescout_sticky cs_gescout_show');
       } else {
-        $header.removeClass('cs_gescout_sticky');
-        $header.removeClass('cs_gescout_show');
+        $header.removeClass('cs_gescout_sticky cs_gescout_show');
       }
-
-      if ($header.hasClass('cs_gescout_sticky')) {
-        if (windowTop < lastScrollTop) {
-          $header.addClass('cs_gescout_show');
-        } else {
-          $header.removeClass('cs_gescout_show');
-        }
-      }
-      lastScrollTop = windowTop;
     });
   }
 
@@ -250,47 +240,82 @@
   /*--------------------------------------------------------------
     6. Modal Video
   --------------------------------------------------------------*/
-  function modalVideo() {
-    if ($.exists('.cs_video_open')) {
-      $('body').append(`
-        <div class="cs_video_popup">
-          <div class="cs_video_popup-overlay"></div>
-          <div class="cs_video_popup-content">
-            <div class="cs_video_popup-layer"></div>
-            <div class="cs_video_popup-container">
-              <div class="cs_video_popup-align">
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="about:blank"></iframe>
-                </div>
-              </div>
-              <div class="cs_video_popup-close"></div>
-            </div>
-          </div>
-        </div>
-      `);
-      $(document).on('click', '.cs_video_open', function (e) {
-        e.preventDefault();
-        var video = $(this).attr('href');
+  
 
-        $('.cs_video_popup-container iframe').attr('src', `${video}`);
+  /*--------------------------------------------------------------
+    7. Section Scroll & Scroll Up
+  --------------------------------------------------------------*/
+  function mpcSectionScroll() {
+    function getHeaderOffset() {
+      return ($('.cs_sticky_header').outerHeight() || 0) + 20;
+    }
 
-        $('.cs_video_popup').addClass('active');
-      });
-      $('.cs_video_popup-close, .cs_video_popup-layer').on(
-        'click',
-        function (e) {
-          $('.cs_video_popup').removeClass('active');
-          $('html').removeClass('overflow-hidden');
-          $('.cs_video_popup-container iframe').attr('src', 'about:blank');
-          e.preventDefault();
-        },
+    function scrollToHash(hash, animate) {
+      if (!hash || hash === '#') {
+        return;
+      }
+      var $target = $(hash);
+      if (!$target.length) {
+        return;
+      }
+      var top = $target.offset().top - getHeaderOffset();
+      if (animate) {
+        $('html, body').stop().animate({ scrollTop: top }, 600);
+      } else {
+        window.scrollTo(0, top);
+      }
+    }
+
+    function isIndexPage() {
+      var path = window.location.pathname;
+      return (
+        path.endsWith('/') ||
+        path.endsWith('/index.html') ||
+        path.endsWith('index.html')
       );
+    }
+
+    function linkTargetsIndex(href) {
+      if (!href || href.charAt(0) === '#') {
+        return true;
+      }
+      return (
+        href === 'index.html' ||
+        href.endsWith('/index.html') ||
+        href.endsWith('/')
+      );
+    }
+
+    $(document).on(
+      'click',
+      '.cs_nav_list a[href*="#"], .cs_footer_widget_menu a[href*="#"], .cs_hero_btns a[href*="#"]',
+      function (e) {
+      var href = $(this).attr('href');
+      var hashIndex = href.indexOf('#');
+      if (hashIndex === -1) {
+        return;
+      }
+      var path = href.slice(0, hashIndex);
+      var hash = href.slice(hashIndex);
+      if (!isIndexPage() || !linkTargetsIndex(path)) {
+        return;
+      }
+      e.preventDefault();
+      history.pushState(null, '', hash);
+      scrollToHash(hash, true);
+      $('.cs_side_header').removeClass('active');
+      $('html').removeClass('cs_hamburger_active');
+    });
+
+    if (window.location.hash && isIndexPage()) {
+      $(window).on('load', function () {
+        setTimeout(function () {
+          scrollToHash(window.location.hash, false);
+        }, 300);
+      });
     }
   }
 
-  /*--------------------------------------------------------------
-    7. Scroll Up
-  --------------------------------------------------------------*/
   function scrollUp() {
     $('.cs_scrollup').on('click', function (e) {
       e.preventDefault();
