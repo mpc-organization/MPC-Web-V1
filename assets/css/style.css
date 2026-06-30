@@ -85,6 +85,16 @@
 /*--------------------------------------------------------------
 1. Typography
 ----------------------------------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+
+#vision,
+#current-mpc-work,
+#contact {
+  scroll-margin-top: 100px;
+}
+
 body,
 html {
   color: var(--body-color);

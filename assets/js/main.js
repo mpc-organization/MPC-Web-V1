@@ -51,6 +51,7 @@
     slickInit();
     modalVideo();
     scrollUp();
+    mpcSectionScroll();
     donationCard();
     rippleInit();
     accordian();
@@ -242,8 +243,76 @@
   
 
   /*--------------------------------------------------------------
-    7. Scroll Up
+    7. Section Scroll & Scroll Up
   --------------------------------------------------------------*/
+  function mpcSectionScroll() {
+    function getHeaderOffset() {
+      return ($('.cs_sticky_header').outerHeight() || 0) + 20;
+    }
+
+    function scrollToHash(hash, animate) {
+      if (!hash || hash === '#') {
+        return;
+      }
+      var $target = $(hash);
+      if (!$target.length) {
+        return;
+      }
+      var top = $target.offset().top - getHeaderOffset();
+      if (animate) {
+        $('html, body').stop().animate({ scrollTop: top }, 600);
+      } else {
+        window.scrollTo(0, top);
+      }
+    }
+
+    function isIndexPage() {
+      var path = window.location.pathname;
+      return (
+        path.endsWith('/') ||
+        path.endsWith('/index.html') ||
+        path.endsWith('index.html')
+      );
+    }
+
+    function linkTargetsIndex(href) {
+      if (!href || href.charAt(0) === '#') {
+        return true;
+      }
+      return (
+        href === 'index.html' ||
+        href.endsWith('/index.html') ||
+        href.endsWith('/')
+      );
+    }
+
+    $(document).on('click', '.cs_nav_list a[href*="#"]', function (e) {
+      var href = $(this).attr('href');
+      var hashIndex = href.indexOf('#');
+      if (hashIndex === -1) {
+        return;
+      }
+      var path = href.slice(0, hashIndex);
+      var hash = href.slice(hashIndex);
+      if (!isIndexPage() || !linkTargetsIndex(path)) {
+        return;
+      }
+      e.preventDefault();
+      history.pushState(null, '', hash);
+      scrollToHash(hash, true);
+      $('.cs_side_header').removeClass('active');
+      $('html').removeClass('cs_hamburger_active');
+    });
+
+    if (window.location.hash && isIndexPage()) {
+      $(window).on('load', function () {
+        setTimeout(function () {
+          scrollToHash(window.location.hash, false);
+        }, 300);
+      });
+    }
+  }
+
   function scrollUp() {
     $('.cs_scrollup').on('click', function (e) {
       e.preventDefault();
