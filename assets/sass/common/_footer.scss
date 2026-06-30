@@ -99,6 +99,12 @@
   &.cs_type_1 {
     margin-top: 0;
   }
+  &.cs_dark_blue_bg {
+    background-color: var(--dark-blue-color);
+  }
+  &.cs_dark_blue_bg .cs_footer_bottom {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
   .cs_newsletter.cs_style_2 {
     margin-top: -134px;
   }
