@@ -9,7 +9,8 @@
   <title>MPC - Activities Admin</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     .cs_admin_wrap { padding: 120px 0 80px; }
     .cs_admin_card { background: #fff; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
@@ -20,6 +21,7 @@
     .cs_admin_success { color: #184d6c; margin-bottom: 20px; }
     .cs_admin_error { color: #b42318; margin-bottom: 20px; }
     #activity-sidebar-list li.active a { background-color: var(--heading-color); color: #fff; }
+    .cs_admin_header_actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   </style>
 </head>
 
@@ -36,9 +38,15 @@
           <div class="cs_main_header_center">
             <div class="cs_nav">
               <ul class="cs_nav_list">
-                <li><a href="index.html">Back to Website</a></li>
+                <li><a href="index.html" data-i18n="nav.backToWebsite">Back to Website</a></li>
               </ul>
             </div>
+          </div>
+          <div class="cs_main_header_right">
+            <button class="cs_hamburger_btn cs_translate_btn" aria-label="Translate">
+              <span class="cs_translate_icon"><i class="fa-solid fa-language"></i></span>
+              <span class="cs_translate_text">ខ្មែរ</span>
+            </button>
           </div>
         </div>
       </div>
@@ -50,48 +58,50 @@
       <div id="admin-message" style="display:none;"></div>
 
       <div id="login-panel" class="cs_admin_card" style="max-width: 480px; margin: 0 auto;">
-        <h1 class="cs_fs_38 cs_mb_20">Admin Login</h1>
-        <p class="cs_mb_30">Sign in to publish and manage Our Activities content.</p>
+        <h1 class="cs_fs_38 cs_mb_20" data-i18n="admin.loginTitle">Admin Login</h1>
+        <p class="cs_mb_30" data-i18n="admin.loginIntro">Sign in to publish and manage Our Activities content.</p>
         <form id="login-form">
-          <input type="email" id="login-email" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Admin email" required>
-          <input type="password" id="login-password" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Password" required>
-          <button type="submit" class="cs_btn cs_style_1 w-100" id="login-btn">Sign In</button>
+          <input type="email" id="login-email" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.emailPlaceholder" placeholder="Admin email" required>
+          <input type="password" id="login-password" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.passwordPlaceholder" placeholder="Password" required>
+          <button type="submit" class="cs_btn cs_style_1 w-100" id="login-btn" data-i18n="admin.signIn">Sign In</button>
         </form>
       </div>
 
       <div id="admin-app" style="display:none;">
         <div class="cs_admin_header">
           <div>
-            <h1 class="cs_fs_38 cs_mb_10" id="form-title">Add New Activity</h1>
-            <p class="mb-0">Signed in as <span id="admin-user-email"></span></p>
+            <h1 class="cs_fs_38 cs_mb_10" id="form-title" data-i18n="admin.addNew">Add New Activity</h1>
+            <p class="mb-0"><span data-i18n="admin.signedInAs">Signed in as</span> <span id="admin-user-email"></span></p>
           </div>
-          <button type="button" class="cs_btn cs_style_1 cs_color_1" id="logout-btn">Logout</button>
+          <div class="cs_admin_header_actions">
+            <button type="button" class="cs_btn cs_style_1 cs_color_1" id="logout-btn" data-i18n="admin.logout">Logout</button>
+          </div>
         </div>
 
         <div class="row cs_gap_y_40">
           <div class="col-lg-7">
             <div class="cs_admin_card">
               <form id="activity-form">
-                <input type="text" id="activity-title" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Activity title" required>
-                <input type="text" id="activity-date" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Date (e.g. 11 Dec 2024)" required>
-                <input type="text" id="activity-author" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Author name">
-                <input type="text" id="activity-author-role" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Author role (e.g. Environment Activist)">
-                <input type="url" id="activity-image-url" class="cs_form_field cs_type_1 cs_mb_20" placeholder="Image URL (e.g. assets/img/MPC_images/photo.jpg or https://...)">
+                <input type="text" id="activity-title" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.titlePlaceholder" placeholder="Activity title" required>
+                <input type="text" id="activity-date" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.datePlaceholder" placeholder="Date (e.g. 11 Dec 2024)" required>
+                <input type="text" id="activity-author" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.authorPlaceholder" placeholder="Author name">
+                <input type="text" id="activity-author-role" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.authorRolePlaceholder" placeholder="Author role (e.g. Environment Activist)">
+                <input type="url" id="activity-image-url" class="cs_form_field cs_type_1 cs_mb_20" data-i18n="admin.imageUrlPlaceholder" placeholder="Image URL (e.g. assets/img/MPC_images/photo.jpg or https://...)">
 
-                <h3 class="cs_fs_28 cs_mb_20">Detail sections</h3>
+                <h3 class="cs_fs_28 cs_mb_20" data-i18n="admin.detailSections">Detail sections</h3>
                 <div id="sections-container"></div>
-                <button type="button" class="cs_btn cs_style_1 cs_color_1 cs_mb_30" id="add-section-btn">Add Section</button>
+                <button type="button" class="cs_btn cs_style_1 cs_color_1 cs_mb_30" id="add-section-btn" data-i18n="admin.addSection">Add Section</button>
 
                 <div class="d-flex gap-3 flex-wrap">
-                  <button type="submit" class="cs_btn cs_style_1" id="save-activity-btn">Publish Activity</button>
-                  <button type="button" class="cs_btn cs_style_1 cs_color_1" id="cancel-edit-btn" style="display:none;">Cancel Edit</button>
+                  <button type="submit" class="cs_btn cs_style_1" id="save-activity-btn" data-i18n="admin.publish">Publish Activity</button>
+                  <button type="button" class="cs_btn cs_style_1 cs_color_1" id="cancel-edit-btn" style="display:none;" data-i18n="admin.cancelEdit">Cancel Edit</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="col-lg-5">
             <div class="cs_admin_card">
-              <h2 class="cs_fs_28 cs_mb_20">Published Activities</h2>
+              <h2 class="cs_fs_28 cs_mb_20" data-i18n="admin.publishedList">Published Activities</h2>
               <div id="admin-activities-list"></div>
             </div>
           </div>
@@ -102,13 +112,15 @@
 
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/translations.js?v=2"></script>
+  <script src="assets/js/i18n.js?v=2"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/firebase-init.js?v=2"></script>
   <script src="assets/js/activities-service.js"></script>
-  <script src="assets/js/admin-activities.js"></script>
+  <script src="assets/js/admin-activities.js?v=2"></script>
 </body>
 
 </html>
