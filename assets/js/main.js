@@ -102,7 +102,7 @@
     });
 
     /* Side Nav */
-    $('.cs_hamburger_btn').on('click', function () {
+    $('.cs_hamburger_btn').not('.cs_translate_btn').on('click', function () {
       $('.cs_side_header').addClass('active');
       $('html').addClass('cs_hamburger_active');
     });

@@ -117,6 +117,10 @@
     var detailUrl = 'activity-details.html?id=' + encodeURIComponent(activity.id);
     var imageUrl = activity.imageUrl || 'assets/img/recycling/event_card_img_1.jpg';
     var authorLine = activity.author;
+    var dateLabel = window.MPCI18n ? window.MPCI18n.t('activities.date') : 'Date :';
+    var byLabel = window.MPCI18n ? window.MPCI18n.t('activities.by') : 'By';
+    var seeDetails = window.MPCI18n ? window.MPCI18n.t('btn.seeDetails') : 'See Details';
+
     if (activity.authorRole) {
       authorLine += ' ' + activity.authorRole;
     }
@@ -131,7 +135,9 @@
       '" alt=""></a>' +
       '<div class="cs_event_card_info">' +
       '<div class="cs_event_card_meta cs_mb_15 cs_heading_font cs_fs_21">' +
-      '<span>Date : ' +
+      '<span>' +
+      escapeHtml(dateLabel) +
+      ' ' +
       escapeHtml(activity.date) +
       '</span>' +
       '</div>' +
@@ -140,7 +146,9 @@
       '">' +
       escapeHtml(activity.title) +
       '</a></h2>' +
-      '<p class="cs_event_card_posted_by mb-0 cs_fs_21 cs_semibold cs_heading_font">By <span>' +
+      '<p class="cs_event_card_posted_by mb-0 cs_fs_21 cs_semibold cs_heading_font">' +
+      escapeHtml(byLabel) +
+      ' <span>' +
       escapeHtml(authorLine) +
       '</span></p>' +
       '</div>' +
@@ -149,7 +157,7 @@
       '<a href="' +
       detailUrl +
       '" class="cs_btn cs_style_2 cs_type_1 cs_heading_color cs_fs_21 cs_semibold cs_heading_font">' +
-      'See Details' +
+      seeDetails +
       '<i>' +
       '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">' +
       '<path d="M1 9L9 1M9 1L1 1M9 1L9 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>' +
