@@ -4,7 +4,7 @@ window.MPC_TRANSLATIONS = {
   'nav.whatWeDo': { en: 'What We Do', km: 'ការងាររបស់យើង' },
   'nav.contact': { en: 'Contact', km: 'ទំនាក់ទំនង' },
 
-  'footer.orgName': { en: 'Mlup Promviheathor Center (MPC)', km: 'មរុយភូមិវិធាន (MPC)' },
+  'footer.orgName': { en: 'Mlup Promviheathor Center (MPC)', km: 'មជ្ឈមណ្ឌលម្លប់ព្រហ្មវិហារធម៌ (MPC)' },
   'footer.usefulLinks': { en: 'Useful Links', km: 'តំណភ្ជាប់' },
   'footer.contactInfo': { en: 'Contact Info', km: 'ព័ត៌មានទំនាក់ទំនង' },
   'footer.copyright': {
@@ -106,7 +106,7 @@ window.MPC_TRANSLATIONS = {
   },
   'work.title2': {
     en: 'Public services are linked to gender inclusion',
-    km: 'សេវាសាធារណៈពាក់ព័ន្ធនឹងការរួមបញ្ចូលយេនឌ័រ',
+    km: 'វិស័យសេវាសាធារណៈដោយគិតគូពីសមភាពយេនឌ័រប្រកបដោយបរិយាបន្ន',
   },
   'work.title3': {
     en: 'Education Sector link with Digital',
@@ -120,7 +120,7 @@ window.MPC_TRANSLATIONS = {
   'index.team.role2': { en: 'Finance and Admin Manager', km: 'អ្នកគ្រប់គ្រងហិរញ្ញវត្ថុ និងរដ្ឋបាល' },
   'index.team.role3': {
     en: 'Programme Quality and Business Development Lead',
-    km: 'ប្រធានគុណភាពកម្មវិធី និងអភិវឌ្ឍអាជីវកម្ម',
+    km: 'ប្រធានអភិវឌ្ឍន៍ធុរៈកិច្ច គុណភាព និងកម្មវិធី',
   },
 
   'work.services': { en: 'Our Services', km: 'សេវាកម្មរបស់យើង' },
